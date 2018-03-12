@@ -1,14 +1,19 @@
-.gradle
-/build/
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# Ignore Gradle GUI config
-gradle-app.setting
+# compiled output
+/app/**/*.js
+/app/**/*.css
 
-# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
+# dependencies
+/node_modules
 
-# Cache of project
-.gradletasknamecache
+# Package Lock
+package-lock.json
 
-# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
-# gradle/wrapper/gradle-wrapper.properties
+# IDEs and editors
+.idea
+.project
+
+#System Files
+.DS_Store
+Thumbs.db
