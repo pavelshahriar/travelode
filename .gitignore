@@ -3,6 +3,8 @@
 # compiled output
 /app/**/*.js
 /app/**/*.css
+/platforms/android
+/platforms/ios
 
 # dependencies
 /node_modules

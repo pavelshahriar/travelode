@@ -23,5 +23,10 @@ If step 4 above says something is wrong, manually install everything following t
 1. git clone this repo : `git clone `
 2. go to the project repo : `cd travelode`
 3. run : `npm install`
-4. run : `tns run andoid`
-5. open another terminal and run : `tns run ios`
+4. add mobile platforms one by one :
+```
+tns platform add ios
+tns platform add android
+``` 
+5. run : `tns run andoid`
+6. open another terminal and run : `tns run ios`
