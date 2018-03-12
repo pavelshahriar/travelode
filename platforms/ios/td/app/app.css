@@ -1,0 +1,1 @@
+@import url(nativescript-theme-core/css/orange.css);@import url("~/platform.scss");Page{background-color:white;font-size:15}ActionBar{font-size:25px}StackLayout{padding:15;background-color:white}TextField{border-width:1;border-color:black;margin-left:15;margin-right:15;margin-bottom:10;padding:12}Button{padding:15;border-radius:5}

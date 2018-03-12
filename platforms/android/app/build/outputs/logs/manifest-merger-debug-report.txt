@@ -1,0 +1,136 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:2:1-43:12
+	package
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:3:2-31
+		INJECTED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml
+	android:versionName
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:5:2-27
+		INJECTED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml
+	android:versionCode
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:4:2-25
+		INJECTED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:2:11-69
+supports-screens
+ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:7:2-11:33
+	android:largeScreens
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:10:3-30
+	android:smallScreens
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:8:3-30
+	android:normalScreens
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:9:3-31
+	android:xlargeScreens
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:11:3-31
+uses-sdk
+ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:13:2-15:34
+MERGED from [:nativescript-optimized:] /Users/shahriar.pavel/.android/build-cache/a2490dcfc1e3b1c690029f3efd785fb915b823ba/output/AndroidManifest.xml:7:5-9:41
+MERGED from [:widgets-release:] /Users/shahriar.pavel/.android/build-cache/a64802bdbb648f1747846185f9083d1647b6af9d/output/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:design:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/f708303fd999d2177c6ae7fbc3664aaf154d68c3/output/AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/40b72207e07110620d6ceeaaaab30991a73260e4/output/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/7bbc1b4ab24eb05d15eaa74c68ff04b3e3f6bba8/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/c1e7f238ae1532ca99e8806a243fc71de8aca91f/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/ea478112f5564fa5ac69d7768e49df525365a846/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/65a8a15b50929108a92390acf59224df9dd9eb36/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/f5e193d2cbd1ef48ad16a05a7013954bc31495bb/output/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/6701eee812a25dd961e57206533dc31a46e84183/output/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/7b09765cbb3ce81edb6011ec64c96de2d4b632e0/output/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/29d00fd5230959d6c2e9fe5496b5fcd061783887/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/bffd2582a8f630a930e3c2a8f42fa4cab6d7f1a3/output/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/bdc3458d11fea29b66718a5489a94551478bacd5/output/AndroidManifest.xml:21:5-23:58
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/f708303fd999d2177c6ae7fbc3664aaf154d68c3/output/AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:15:3-32
+		INJECTED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:14:3-29
+		INJECTED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:17:2-76
+	android:name
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:17:19-74
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:18:2-77
+	android:name
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:18:19-75
+uses-permission#android.permission.INTERNET
+ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:19:2-63
+	android:name
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:19:19-61
+application
+ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:21:2-42:16
+MERGED from [:widgets-release:] /Users/shahriar.pavel/.android/build-cache/a64802bdbb648f1747846185f9083d1647b6af9d/output/AndroidManifest.xml:11:5-12:19
+MERGED from [com.android.support:design:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/f708303fd999d2177c6ae7fbc3664aaf154d68c3/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/40b72207e07110620d6ceeaaaab30991a73260e4/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/7bbc1b4ab24eb05d15eaa74c68ff04b3e3f6bba8/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/c1e7f238ae1532ca99e8806a243fc71de8aca91f/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:transition:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/65a8a15b50929108a92390acf59224df9dd9eb36/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/f5e193d2cbd1ef48ad16a05a7013954bc31495bb/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/6701eee812a25dd961e57206533dc31a46e84183/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/7b09765cbb3ce81edb6011ec64c96de2d4b632e0/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/29d00fd5230959d6c2e9fe5496b5fcd061783887/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/bffd2582a8f630a930e3c2a8f42fa4cab6d7f1a3/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/bdc3458d11fea29b66718a5489a94551478bacd5/output/AndroidManifest.xml:29:5-20
+	android:label
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:25:3-35
+	android:allowBackup
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:23:3-29
+	android:icon
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:24:3-32
+	android:theme
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:26:3-34
+	android:name
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:22:3-49
+activity#com.tns.NativeScriptActivity
+ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:28:3-40:14
+	android:label
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:30:4-49
+	android:configChanges
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:31:4-65
+	android:theme
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:32:4-44
+	android:name
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:29:4-47
+meta-data#SET_THEME_ON_LAUNCH
+ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:34:4-87
+	android:resource
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:34:50-84
+	android:name
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:34:15-49
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:36:4-39:20
+action#android.intent.action.MAIN
+ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:37:5-57
+	android:name
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:37:13-54
+category#android.intent.category.LAUNCHER
+ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:38:5-65
+	android:name
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:38:15-62
+activity#com.tns.ErrorReportActivity
+ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:41:3-57
+	android:name
+		ADDED from /Users/shahriar.pavel/Development/td/platforms/android/app/src/main/AndroidManifest.xml:41:13-55
+meta-data#android.support.VERSION
+ADDED from [com.android.support:design:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/f708303fd999d2177c6ae7fbc3664aaf154d68c3/output/AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/40b72207e07110620d6ceeaaaab30991a73260e4/output/AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/7bbc1b4ab24eb05d15eaa74c68ff04b3e3f6bba8/output/AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/c1e7f238ae1532ca99e8806a243fc71de8aca91f/output/AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:recyclerview-v7:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/ea478112f5564fa5ac69d7768e49df525365a846/output/AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:transition:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/65a8a15b50929108a92390acf59224df9dd9eb36/output/AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/f5e193d2cbd1ef48ad16a05a7013954bc31495bb/output/AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/6701eee812a25dd961e57206533dc31a46e84183/output/AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/7b09765cbb3ce81edb6011ec64c96de2d4b632e0/output/AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/29d00fd5230959d6c2e9fe5496b5fcd061783887/output/AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/bffd2582a8f630a930e3c2a8f42fa4cab6d7f1a3/output/AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/bdc3458d11fea29b66718a5489a94551478bacd5/output/AndroidManifest.xml:25:5-27:41
+	android:value
+		ADDED from [com.android.support:design:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/f708303fd999d2177c6ae7fbc3664aaf154d68c3/output/AndroidManifest.xml:27:9-38
+	android:name
+		ADDED from [com.android.support:design:26.0.0-alpha1] /Users/shahriar.pavel/.android/build-cache/f708303fd999d2177c6ae7fbc3664aaf154d68c3/output/AndroidManifest.xml:26:9-47

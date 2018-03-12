@@ -1,0 +1,15 @@
+<ActionBar>
+    <Label text="Travelode" class="action-label"></Label>
+</ActionBar>
+
+<StackLayout>
+  <Image src="~/images/logo-fat-transparent.png" class="logo"></Image>
+  <TextField hint="Username" keyboardType="email"
+             autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.username"></TextField>
+  <TextField hint="Password" secure="true" [(ngModel)]="user.password" ></TextField>
+
+  <Button [text]="isLoggingIn ? 'Sign in' : 'Sign up here'" class="submit-button" (tap)="submit()"></Button>
+  <Button [text]="isLoggingIn ? 'Sign up' : 'Back to login'" (tap)="toggleDisplay()"></Button>
+
+  <!--<Button text="Sign in" class="submit-button" (tap)="submit()"></Button>-->
+</StackLayout>

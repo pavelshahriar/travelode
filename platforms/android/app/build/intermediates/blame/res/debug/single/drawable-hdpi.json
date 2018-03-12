@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/shahriar.pavel/Development/td/platforms/android/app/build/intermediates/res/merged/debug/drawable-hdpi/icon.png",
+        "source": "/Users/shahriar.pavel/Development/td/platforms/android/app/src/main/res/drawable-hdpi/icon.png"
+    },
+    {
+        "merged": "/Users/shahriar.pavel/Development/td/platforms/android/app/build/intermediates/res/merged/debug/drawable-hdpi/logo.png",
+        "source": "/Users/shahriar.pavel/Development/td/platforms/android/app/src/main/res/drawable-hdpi/logo.png"
+    },
+    {
+        "merged": "/Users/shahriar.pavel/Development/td/platforms/android/app/build/intermediates/res/merged/debug/drawable-hdpi/background.png",
+        "source": "/Users/shahriar.pavel/Development/td/platforms/android/app/src/main/res/drawable-hdpi/background.png"
+    }
+]
