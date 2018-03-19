@@ -4,8 +4,8 @@
 
 <StackLayout>
   <Image src="~/images/logo-fat-transparent.png" class="logo"></Image>
-  <TextField hint="Username" keyboardType="email"
-             autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.username"></TextField>
+  <TextField hint="Email" keyboardType="email"
+             autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.email"></TextField>
   <TextField hint="Password" secure="true" [(ngModel)]="user.password" ></TextField>
 
   <Button [text]="isLoggingIn ? 'Sign in' : 'Sign up here'" class="submit-button" (tap)="submit()"></Button>

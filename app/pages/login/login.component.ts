@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { User } from "../../shared/models/user";
 import {Router} from "@angular/router";
 import {UserService} from "../../shared/services/user.service";
+import * as util from "util";
 
 @Component({
   selector: "my-app-login",
@@ -54,16 +55,18 @@ export class LoginComponent {
   }
 
   login() {
-    if(this.user.username && this.user.password) {
-      this.router.navigate(["/travelode/list"]);
+    if(this.user.email && this.user.password) {
+      this.userService.login(this.user)
+            .subscribe(
+                (data) => {
+                  console.log(util.inspect(data, false, null));
 
-      // this.userService.login(this.user)
-      //     .subscribe(
-      //         (data) => {
-      //           if(data === true) {this.router.navigate(["/travelode/list"])}
-      //         },
-      //         (error) => alert("Bullocks!")
-      //     );
+                  if(data[0].email == this.user.email && data[0].password == this.user.password) {
+                    this.router.navigate(["/travelode/list"])
+                  }
+                },
+                (error) => alert("Bullocks!")
+            );
     } else {
       alert("Where is your username and password dude ?")
     }

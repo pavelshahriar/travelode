@@ -25,18 +25,23 @@ export class UserService {
         .catch(this.handleErrors);
   }
 
-  // login(user: User) : Observable<boolean>{
-  //   return this.http.post(
-  //       Config.apiUrl + "user/" + Config.appKey + "/login",
-  //       JSON.stringify({
-  //         username: user.email,
-  //         password: user.password
-  //       }),
-  //       { headers: this.getCommonHeaders() }
-  //   )
-  //       .map(response => response.json())
-  //       .catch(this.handleErrors);
-  // }
+  login(user: User) : Observable<Array<User>>{
+    return this.http.get(Config.tdApiURl + "user/" + user.email,
+        {headers: this.getCommonHeaders()}
+    )
+        .map(response => response.json())
+        .catch(this.handleErrors);
+    // return this.http.post(
+    //     Config.apiUrl + "user/" + Config.appKey + "/login",
+    //     JSON.stringify({
+    //       username: user.email,
+    //       password: user.password
+    //     }),
+    //     { headers: this.getCommonHeaders() }
+    // )
+    //     .map(response => response.json())
+    //     .catch(this.handleErrors);
+  }
 
   getCommonHeaders() {
     let headers = new Headers();
