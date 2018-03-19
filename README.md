@@ -20,7 +20,7 @@ If step 4 above says something is wrong, manually install everything following t
 
 ## App Setup
 
-1. git clone this repo : `git clone `
+1. git clone this repo : `git clone git@github.com:pavelshahriar/travelode.git`
 2. go to the project repo : `cd travelode`
 3. run : `npm install`
 4. add mobile platforms one by one :
