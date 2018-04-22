@@ -5,8 +5,8 @@
 <StackLayout>
   <Image src="~/images/logo-fat-transparent.png" class="logo"></Image>
   <TextField hint="Email" keyboardType="email"
-             autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.email"></TextField>
-  <TextField hint="Password" secure="true" [(ngModel)]="user.password" ></TextField>
+             autocorrect="false" autocapitalizationType="none" [(ngModel)]="login_credential.email"></TextField>
+  <TextField hint="Password" secure="true" [(ngModel)]="login_credential.password" ></TextField>
 
   <Button [text]="isLoggingIn ? 'Sign in' : 'Sign up here'" class="submit-button" (tap)="submit()"></Button>
   <Button [text]="isLoggingIn ? 'Sign up' : 'Back to login'" (tap)="toggleDisplay()"></Button>
