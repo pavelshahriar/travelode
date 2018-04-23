@@ -1,7 +1,8 @@
 export class User {
     id: number;
     email: string;
-    password: string;
     fullname: string;
     photo: string;
+    created: string;
+    updated: string;
 }

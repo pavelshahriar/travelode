@@ -1,0 +1,10 @@
+<ActionBar class="action-bar">
+    <Label text="travelode" class="font-weight-bold primary"></Label>
+</ActionBar>
+
+<StackLayout orientation="vertical" class="container">
+    <Label text="Create a new travelode" class="travelode-heading tertiary text-center"></Label>
+    <TextField hint="Title*" class="travelode-create-title" [(ngModel)]="travelode.title"></TextField>
+    <TextView  height="100" borderColor="#DEDEDE" borderWidth="1" hint="A short description of your travelode"  returnKeyType="send" class="travelode-create-desc" [(ngModel)]="travelode.description"></TextView>
+    <Button text="Create" class="btn-tertiary travelode-create-button" (tap)="createTravelode()"></Button>
+</StackLayout>

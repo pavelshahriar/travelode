@@ -14,19 +14,6 @@ import { LoginCredential } from "../models/login-credential";
 export class UserService {
   constructor(private http: Http) {}
 
-  // register(user: User) {
-  //   return this.http.post(
-  //       Config.apiUrl + "login_credential/" + Config.appKey,
-  //       JSON.stringify({
-  //         username: user.email,
-  //         email: user.email,
-  //         password: user.password
-  //       }),
-  //       { headers: this.getCommonHeaders() }
-  //   )
-  //       .catch(this.handleErrors);
-  // }
-
   login(lc: LoginCredential) : Observable<Array<User>>{
     console.log(util.inspect(lc, false, null));
     console.log(util.inspect(Config, false, null));
@@ -39,7 +26,15 @@ export class UserService {
         .catch(this.handleErrors);
   }
 
-  getCommonHeaders() {
+  singup(lc: LoginCredential) {
+    return this.http.post(
+        Config.apiUrl + "user",
+        JSON.stringify(lc),
+        { headers: this.getCommonHeaders() }
+    );
+  }
+
+    getCommonHeaders() {
     let headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append("Authorization", Config.authHeader);

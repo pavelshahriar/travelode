@@ -1,0 +1,16 @@
+<ActionBar class="action-bar">
+    <Label text="travelode" class="font-weight-bold primary"></Label>
+</ActionBar>
+
+<StackLayout orientation="vertical" class="container">
+    <Label text="Your Travelodes" class="travelode-heading tertiary text-center"></Label>
+
+    <ListView [items]="travelodeList" (itemTap)="onItemTap($event)" class="travelode-list">
+        <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
+            <StackLayout [class.odd]="odd" [class.even]="even">
+                <Label [text]=item.title height="30" class="travelode-list-item"></Label>
+            </StackLayout>
+        </ng-template>
+    </ListView>
+
+</StackLayout>

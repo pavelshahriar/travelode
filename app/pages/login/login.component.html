@@ -1,15 +1,16 @@
-<ActionBar>
-    <Label text="Travelode" class="action-label"></Label>
-</ActionBar>
+<StackLayout class="container">
+    <Image src="~/images/logo-fat-transparent.png" class="login-logo"></Image>
+    <TextField hint="email" keyboardType="email" class="text-center"
+               autocorrect="false" autocapitalizationType="none" [(ngModel)]="login_credential.email"></TextField>
+    <TextField hint="password" secure="true" [(ngModel)]="login_credential.password"></TextField>
 
-<StackLayout>
-  <Image src="~/images/logo-fat-transparent.png" class="logo"></Image>
-  <TextField hint="Email" keyboardType="email"
-             autocorrect="false" autocapitalizationType="none" [(ngModel)]="login_credential.email"></TextField>
-  <TextField hint="Password" secure="true" [(ngModel)]="login_credential.password" ></TextField>
-
-  <Button [text]="isLoggingIn ? 'Sign in' : 'Sign up here'" class="submit-button" (tap)="submit()"></Button>
-  <Button [text]="isLoggingIn ? 'Sign up' : 'Back to login'" (tap)="toggleDisplay()"></Button>
-
-  <!--<Button text="Sign in" class="submit-button" (tap)="submit()"></Button>-->
+    <Button text="Sign in" class="btn-tertiary login-button" (tap)="login()"></Button>
+    <StackLayout orientation="horizontal" horizontalAlignment="center">
+        <Label text="Or " class="login-signup-dialogue"></Label>
+        <Label text="sing up" (tap)="signUp()" class="login-signup-dialogue tertiary"></Label>
+        <Label text=" here" class="login-signup-dialogue"></Label>
+    </StackLayout>
 </StackLayout>
+
+
+

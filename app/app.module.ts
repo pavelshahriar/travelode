@@ -7,6 +7,7 @@ import {NativeScriptRouterModule} from "nativescript-angular/router";
 import { AppComponent } from "./app.component";
 import {navigatableComponents, routes} from "./app.routing";
 import {UserService} from "./shared/services/user.service";
+import {TravelodeService} from "./shared/services/travelode.service";
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import {UserService} from "./shared/services/user.service";
       AppComponent
   ],
   providers: [
-      UserService
+      UserService,
+      TravelodeService
   ],
   schemas: [NO_ERRORS_SCHEMA],
 })

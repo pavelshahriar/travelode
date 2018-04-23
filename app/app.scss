@@ -1,31 +1,13 @@
-@import "nativescript-theme-core/css/orange.css";
+@import '~nativescript-theme-core/scss/_light.scss';
 @import url("~/platform.scss");
+@import url("./shared/styles/colors.scss");
+@import url("./shared/styles/buttons.scss");
+@import url("./shared/styles/container.scss");
 
-Page {
-  background-color: white;
-  font-size: 15;
+.action-bar {
+  font-size: 25;
 }
 
-ActionBar {
-  font-size: 25px;
+.page {
+  padding: 45;
 }
-
-StackLayout {
-  padding: 15;
-  background-color: white;
-}
-
-TextField {
-  border-width: 1;
-  border-color: black;
-  margin-left: 15;
-  margin-right: 15;
-  margin-bottom: 10;
-  padding: 12;
-}
-
-Button {
-  padding: 15;
-  border-radius: 5;
-}
-

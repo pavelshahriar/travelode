@@ -12,13 +12,13 @@ import {Page} from "tns-core-modules/ui/page";
 @Component({
     selector: "my-app-login",
     moduleId: module.id,
-    templateUrl: './login.component.html',
+    templateUrl: './signup.component.html',
     styleUrls: [
-        "./login-common.scss",
-        "./login.scss"
+        "./signup-common.scss",
+        "./signup.scss"
     ]
 })
-export class LoginComponent {
+export class SignupComponent {
     private _login_credential: LoginCredential;
     public isLoggingIn: boolean = true;
 
@@ -29,7 +29,7 @@ export class LoginComponent {
         public page: Page
     ) {
         this.login_credential = new LoginCredential();
-            page.actionBarHidden = true;
+        page.actionBarHidden = true;
     }
 
     get login_credential(): LoginCredential {
@@ -40,23 +40,19 @@ export class LoginComponent {
         this._login_credential = value;
     }
 
-    signUp() {
-        this.router.navigate(["/signup"]);
+    login() {
+        this.router.navigate(["/"]);
     }
 
-    login() {
+    singUp() {
         if (this.login_credential.email && this.login_credential.password) {
-            this.userService.login(this.login_credential)
+            this.userService.singup(this.login_credential)
                 .subscribe(
                     (data) => {
                         console.log(util.inspect(data, false, null));
-                        if (data.length === 0) {
-                            alert("Oops ! Couldn't find you anywhere in the universe. Try Again?");
-                        } else {
-                            appSettings.setNumber('userId', data[0].id);
-                            appSettings.setString('email', data[0].email);
-                            this._enterTravelodePanel();
-                            // this.router.navigate(["/travelode/welcome"]);
+                        if (data.status === 200) {
+                            alert("Account Created! Please login now.");
+                            this.router.navigate(["/"]);
                         }
                     },
                     (error) => {
@@ -65,22 +61,7 @@ export class LoginComponent {
                     }
                 );
         } else {
-            alert("Where is your username and password dude ?")
+            alert("You want to create an account without email and password ? Really ?")
         }
-    }
-
-    _enterTravelodePanel () {
-        let travelodes: Array<Travelode> = [];
-        this.travelodeService.getAllById(appSettings.getNumber('userId'))
-            .subscribe(
-                (data) => {
-                    travelodes = data.json();
-                    if(travelodes.length > 0) {
-                        this.router.navigate(["/travelode/list"]);
-                    } else {
-                        this.router.navigate(["/travelode/welcome"]);
-                    }
-                }
-            );
     }
 }
