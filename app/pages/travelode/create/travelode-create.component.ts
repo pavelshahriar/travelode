@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
 import {Router} from "@angular/router";
+import {topmost} from "ui/frame";
 import * as util from "util";
 import {Travelode} from "../../../shared/models/travelode";
 import {TravelodeService} from "../../../shared/services/travelode.service";
@@ -49,5 +50,10 @@ export class TravelodeCreateComponent {
         } else {
             alert("Whats a Travelode without a title? Tell me!")
         }
+    }
+
+    goBack() {
+        console.log('Nav button tapped !')
+        topmost().goBack();
     }
 }
