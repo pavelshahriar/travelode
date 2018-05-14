@@ -23,13 +23,6 @@ export class TravelodeListComponent {
 
         this._travelodeList = [];
         this.getTravelodesList();
-
-        // this._travelodeList = [
-        //     { "id": 1, "title": 'Nepal Trip 2018', "description": 'Awesome Trip', "userId": 1, "created": '2018-04-22T06:25:33.000Z', "updated": '2018-04-22T08:17:55.000Z', "coverId": null },
-        //     { "id": 2, "title": 'USA TRip 2012', "description": 'Blabla boa', "userId": 1, "created": '2018-04-23T06:26:37.000Z', "updated": null, "coverId": null },
-        //     { "id": 3, "title": 'EU Trip 2012', "description": 'Nothing to say !', "userId": 1, "created": '2018-04-23T06:28:53.000Z', "updated": null, "coverId": null },
-        //     { "id": 4, "title": 'Some trip', "description": 'Fadsasd', "userId": 1, "created": '2018-04-23T06:36:02.000Z', "updated": null, "coverId": null }
-        // ];
     }
 
     get travelodeList(): Array<Travelode> {
@@ -41,7 +34,7 @@ export class TravelodeListComponent {
     }
 
     getTravelodesList () {
-        this.travelodeService.getAllById(appSettings.getNumber('userId'))
+        this.travelodeService.getAllByUserId(appSettings.getNumber('userId'))
             .subscribe(
                 (data) => {
                     this.travelodeList = data.json();
@@ -50,7 +43,9 @@ export class TravelodeListComponent {
             );
     }
 
-    public onItemTap(args) {
-        console.log("Item Tapped at cell index: " + args.index);
+    public itemTapped(item) {
+        console.log("Item Tapped: ");
+        console.log(util.inspect(item, false, null));
+        this.router.navigate(["/post/start/" + item.id]);
     }
 }

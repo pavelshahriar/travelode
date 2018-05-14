@@ -24,11 +24,18 @@ export class TravelodeService {
         )
     }
 
-    getAllById(id: number) : Observable<Response> {
+    getAllByUserId(id: number) : Observable<Response> {
         return this.http.get(
             Config.apiUrl + "travelode?userId=" + id,
             {headers: this.getCommonHeaders()}
         )
+    }
+
+    getOneByTravelodeId(id: number) : Observable<Response> {
+        return this.http.get(
+            Config.apiUrl + "travelode/" + id,
+            {headers: this.getCommonHeaders()}
+        );
     }
 
     getCommonHeaders() {

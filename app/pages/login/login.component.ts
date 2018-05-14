@@ -55,8 +55,8 @@ export class LoginComponent {
                         } else {
                             appSettings.setNumber('userId', data[0].id);
                             appSettings.setString('email', data[0].email);
-                            // this._enterTravelodePanel();
-                            this.router.navigate(["/travelode/welcome"]);
+                            this._enterTravelodePanel();
+                            // this.router.navigate(["/travelode/welcome"]);
                         }
                     },
                     (error) => {
@@ -71,7 +71,7 @@ export class LoginComponent {
 
     _enterTravelodePanel () {
         let travelodes: Array<Travelode> = [];
-        this.travelodeService.getAllById(appSettings.getNumber('userId'))
+        this.travelodeService.getAllByUserId(appSettings.getNumber('userId'))
             .subscribe(
                 (data) => {
                     travelodes = data.json();

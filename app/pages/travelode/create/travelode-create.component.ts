@@ -1,5 +1,5 @@
-import {Component} from "@angular/core";
-import {Router} from "@angular/router";
+import {Component, OnInit} from "@angular/core";
+import {ActivatedRoute, Router} from "@angular/router";
 import {topmost} from "ui/frame";
 import * as util from "util";
 import {Travelode} from "../../../shared/models/travelode";
@@ -15,13 +15,23 @@ import * as appSettings from "application-settings";
         "./travelode-create.scss"
     ]
 })
-export class TravelodeCreateComponent {
+export class TravelodeCreateComponent implements OnInit{
+    private _travelodeId: number = -1;
     private _travelode: Travelode;
 
     constructor(
+        private route: ActivatedRoute,
         private router: Router,
         private travelodeService: TravelodeService) {
             this._travelode = new Travelode();
+    }
+
+    get travelodeId(): number {
+        return this._travelodeId;
+    }
+
+    set travelodeId(value: number) {
+        this._travelodeId = value;
     }
 
     get travelode(): Travelode {
@@ -31,6 +41,27 @@ export class TravelodeCreateComponent {
     set travelode(value: Travelode) {
         this._travelode = value;
     }
+
+    ngOnInit() {
+        this.route.params.subscribe(params => {
+            if (params['id']) {
+                this.travelodeId = +params['id'];
+                console.log('The travelode id is : ' + this.travelodeId);
+                this.getTravelodeById();
+            }
+        })
+    }
+
+    getTravelodeById() {
+        this.travelodeService.getOneByTravelodeId(this.travelodeId)
+            .subscribe(
+                (data) => {
+                    this.travelode = data.json()[0];
+                    console.log(util.inspect(this.travelode, false, null));
+                }
+            );
+    }
+
 
     createTravelode() {
         if (this.travelode.title) {
