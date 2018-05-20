@@ -37,7 +37,7 @@ module.exports = function (logger, projectData, usbLiveSyncService) {
     }
 
     return new Promise(function (resolve, reject) {
-        // do not copy on live sync 
+        // do not copy on live sync
         if (!!usbLiveSyncService.isInitialized) {
             resolve();
             return;

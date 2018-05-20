@@ -17,7 +17,7 @@ import {Travelode} from "../../../shared/models/travelode";
 })
 export class PostStartComponent implements OnInit{
     private _travelodeId: number;
-    private _travelode : Travelode
+    private _travelode : Travelode;
 
     constructor(
         private route: ActivatedRoute,
@@ -39,6 +39,7 @@ export class PostStartComponent implements OnInit{
     set travelode(value: Travelode) {
         this._travelode = value;
     }
+
     ngOnInit() {
         this.route.params.subscribe(params => {
             this.travelodeId = +params['id'];
@@ -50,9 +51,9 @@ export class PostStartComponent implements OnInit{
     getTravelodeById () {
         this.travelodeService.getOneByTravelodeId(this.travelodeId)
             .subscribe(
-                (data) => {
-                    this.travelode = data.json()[0];
-                    console.log(util.inspect(this.travelode, false, null));
+                (data: Travelode) => {
+                    console.log(util.inspect(data, false, null));
+                    this.travelode = data[0];
                 }
             );
     }

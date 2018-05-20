@@ -1,48 +1,41 @@
 import { Injectable } from "@angular/core";
-import { Http, Headers, Response } from "@angular/http";
-import { Observable } from "rxjs/Observable";
-import "rxjs/add/operator/catch";
-import "rxjs/add/operator/do";
-import "rxjs/add/operator/map";
-import * as util from "util";
+import {HttpClient, HttpHeaders } from "@angular/common/http";
 
 import * as Config from "../../config/config.json";
-import { User } from "../models/user";
-import { LoginCredential } from "../models/login-credential";
+import {LoginCredential} from "../models/login-credential";
+import * as util from "util";
 
 @Injectable()
 export class UserService {
-  constructor(private http: Http) {}
+    constructor(private http: HttpClient) {}
 
-  login(lc: LoginCredential) : Observable<Array<User>>{
-    console.log(util.inspect(lc, false, null));
-    console.log(util.inspect(Config, false, null));
-    return this.http.post(
-        Config.apiUrl + "user/login",
-        JSON.stringify(lc),
-        {headers: this.getCommonHeaders()}
-    )
-        .map(response => response.json())
-        .catch(this.handleErrors);
-  }
+    login(lc: LoginCredential) {
+        // console.log(util.inspect(lc, false, null));
+        // console.log(util.inspect(Config, false, null));
 
-  singup(lc: LoginCredential) {
-    return this.http.post(
-        Config.apiUrl + "user",
-        JSON.stringify(lc),
-        { headers: this.getCommonHeaders() }
-    );
-  }
+        const url = Config.apiUrl + "user/login";
+        const body = JSON.stringify(lc);
+        const headers = this.createRequestHeader();
 
-    getCommonHeaders() {
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Authorization", Config.authHeader);
-    return headers;
-  }
+        return this.http.post(url, body, {headers: headers});
+    }
 
-  handleErrors(error: Response) {
-    console.log(JSON.stringify(error.json()));
-    return Observable.throw(error);
-  }
+    singup(lc: LoginCredential) {
+        // console.log(util.inspect(lc, false, null));
+        // console.log(util.inspect(Config, false, null));
+
+        const url = Config.apiUrl + "user";
+        const body = JSON.stringify(lc);
+        const headers = this.createRequestHeader();
+
+        return this.http.post(url, body, {headers: headers, observe: "response"});
+    }
+
+    createRequestHeader() {
+        const headers = new HttpHeaders({
+            "Content-Type": "application/json"
+        });
+
+        return headers;
+    }
 }

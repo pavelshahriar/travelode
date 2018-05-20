@@ -56,7 +56,7 @@ export class TravelodeCreateComponent implements OnInit{
         this.travelodeService.getOneByTravelodeId(this.travelodeId)
             .subscribe(
                 (data) => {
-                    this.travelode = data.json()[0];
+                    this.travelode = data[0];
                     console.log(util.inspect(this.travelode, false, null));
                 }
             );

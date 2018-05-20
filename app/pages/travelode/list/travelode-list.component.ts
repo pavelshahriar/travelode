@@ -36,8 +36,8 @@ export class TravelodeListComponent {
     getTravelodesList () {
         this.travelodeService.getAllByUserId(appSettings.getNumber('userId'))
             .subscribe(
-                (data) => {
-                    this.travelodeList = data.json();
+                (data: Array<Travelode>) => {
+                    this.travelodeList = data;
                     console.log(util.inspect(this.travelodeList, false, null));
                 }
             );
@@ -45,7 +45,11 @@ export class TravelodeListComponent {
 
     public itemTapped(item) {
         console.log("Item Tapped: ");
-        console.log(util.inspect(item, false, null));
+        // console.log(util.inspect(item, false, null));
         this.router.navigate(["/post/start/" + item.id]);
+    }
+
+    public createNewTapped() {
+        this.router.navigate(["/travelode/create/"]);
     }
 }

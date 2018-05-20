@@ -8,6 +8,8 @@ import {UserService} from "../../shared/services/user.service";
 import {TravelodeService} from "../../shared/services/travelode.service";
 import {Travelode} from "../../shared/models/travelode";
 import {Page} from "tns-core-modules/ui/page";
+import {HttpResponse} from "@angular/common/http";
+import {User} from "~/shared/models/user";
 
 @Component({
     selector: "my-app-login",
@@ -48,8 +50,8 @@ export class LoginComponent {
         if (this.login_credential.email && this.login_credential.password) {
             this.userService.login(this.login_credential)
                 .subscribe(
-                    (data) => {
-                        console.log(util.inspect(data, false, null));
+                    (data: Array<User>) => {
+                        // console.log(util.inspect(result[0], false, null));
                         if (data.length === 0) {
                             alert("Oops ! Couldn't find you anywhere in the universe. Try Again?");
                         } else {
@@ -70,12 +72,11 @@ export class LoginComponent {
     }
 
     _enterTravelodePanel () {
-        let travelodes: Array<Travelode> = [];
         this.travelodeService.getAllByUserId(appSettings.getNumber('userId'))
             .subscribe(
-                (data) => {
-                    travelodes = data.json();
-                    if(travelodes.length > 0) {
+                (data: Array<Travelode>) => {
+                    // console.log(util.inspect(data, false, null));
+                    if(data.length > 0) {
                         this.router.navigate(["/travelode/list"]);
                     } else {
                         this.router.navigate(["/travelode/welcome"]);

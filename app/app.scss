@@ -1,5 +1,5 @@
 @import '~nativescript-theme-core/scss/_light.scss';
-@import url("~/platform.scss");
+@import url("./platform.scss");
 @import url("./shared/styles/colors.scss");
 @import url("./shared/styles/buttons.scss");
 @import url("./shared/styles/container.scss");
@@ -10,4 +10,8 @@
 
 .page {
   padding: 45;
+}
+
+.font-awesome {
+  font-family: "FontAwesome";
 }

@@ -1,8 +1,8 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
-import {NativeScriptHttpModule} from "nativescript-angular/http";
-import {NativeScriptFormsModule} from "nativescript-angular/forms";
-import {NativeScriptRouterModule} from "nativescript-angular/router";
+import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
+import { NativeScriptFormsModule } from "nativescript-angular/forms";
+import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 import { AppComponent } from "./app.component";
 import {navigatableComponents, routes} from "./app.routing";
@@ -13,7 +13,7 @@ import {TravelodeService} from "./shared/services/travelode.service";
   imports: [
       NativeScriptModule,
       NativeScriptFormsModule,
-      NativeScriptHttpModule,
+      NativeScriptHttpClientModule,
       NativeScriptRouterModule,
       NativeScriptRouterModule.forRoot(routes)
   ],

@@ -1,5 +1,11 @@
 <ActionBar class="action-bar">
     <Label text="travelode" class="font-weight-bold primary"></Label>
+    <ActionItem
+            (tap)="createNewTapped()"
+            android.position="right"
+            class="action-bar-item action-bar-item-menu-icon"
+            ios.position="right"
+    ></ActionItem>
 </ActionBar>
 
 <StackLayout orientation="vertical" class="container">

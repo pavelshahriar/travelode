@@ -8,6 +8,7 @@ import {UserService} from "../../shared/services/user.service";
 import {TravelodeService} from "../../shared/services/travelode.service";
 import {Travelode} from "../../shared/models/travelode";
 import {Page} from "tns-core-modules/ui/page";
+import {HttpResponse} from "@angular/common/http";
 
 @Component({
     selector: "my-app-login",
@@ -48,9 +49,9 @@ export class SignupComponent {
         if (this.login_credential.email && this.login_credential.password) {
             this.userService.singup(this.login_credential)
                 .subscribe(
-                    (data) => {
+                    (data: any) => {
                         console.log(util.inspect(data, false, null));
-                        if (data.status === 200) {
+                        if (data.status == 200) {
                             alert("Account Created! Please login now.");
                             this.router.navigate(["/"]);
                         }

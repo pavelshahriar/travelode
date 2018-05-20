@@ -1,51 +1,50 @@
 import { Injectable } from "@angular/core";
-import { Http, Headers, Response } from "@angular/http";
-import { Observable } from "rxjs/Observable";
-import "rxjs/add/operator/catch";
-import "rxjs/add/operator/do";
-import "rxjs/add/operator/map";
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import * as util from "util";
 
 import * as Config from "../../config/config.json";
-import { User } from "../models/user";
 import {Travelode} from "../models/travelode";
 
 @Injectable()
 export class TravelodeService {
-    constructor(private http: Http) {}
+    constructor(private http: HttpClient) {}
 
-    create(tr: Travelode) : Observable<Response>{
-        return this.http.post(
-            Config.apiUrl + "travelode",
-            JSON.stringify(tr),
-            {headers: this.getCommonHeaders()}
-        )
+    create(tr: Travelode) {
+        // console.log(util.inspect(tr, false, null));
+        // console.log(util.inspect(Config, false, null));
+
+        const url = Config.apiUrl + "travelode";
+        const body = JSON.stringify(tr);
+        const headers = this.createRequestHeader();
+
+        return this.http.post(url, body, {headers: headers, observe: "response"});
     }
 
-    getAllByUserId(id: number) : Observable<Response> {
-        return this.http.get(
-            Config.apiUrl + "travelode?userId=" + id,
-            {headers: this.getCommonHeaders()}
-        )
+    getAllByUserId(id: number) {
+        // console.log(id);
+        // console.log(util.inspect(Config, false, null));
+
+        const url = Config.apiUrl + "travelode?userId=" + id;
+        const headers = this.createRequestHeader();
+
+        return this.http.get(url, {headers: headers});
     }
 
-    getOneByTravelodeId(id: number) : Observable<Response> {
-        return this.http.get(
-            Config.apiUrl + "travelode/" + id,
-            {headers: this.getCommonHeaders()}
-        );
+    getOneByTravelodeId(id: number) {
+        // console.log(id);
+        // console.log(util.inspect(Config, false, null));
+
+        const url = Config.apiUrl + "travelode/" + id;
+        const headers = this.createRequestHeader();
+
+        return this.http.get(url, {headers: headers});
     }
 
-    getCommonHeaders() {
-        let headers = new Headers();
-        headers.append("Content-Type", "application/json");
-        headers.append("Authorization", Config.authHeader);
+    createRequestHeader() {
+        const headers = new HttpHeaders({
+            "Content-Type": "application/json"
+        });
+
         return headers;
-    }
-
-    handleErrors(error: Response) {
-        return Observable.throw(error);
     }
 }
