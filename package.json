@@ -7,7 +7,9 @@
     "android-local": "cross-env BUILD_PROFILE=local tns run android",
     "ios-local": "cross-env BUILD_PROFILE=local tns run ios",
     "android-prod": "cross-env BUILD_PROFILE=prod tns run android",
-    "ios-prod": "cross-env BUILD_PROFILE=prod tns run ios"
+    "android-prod-build": "cross-env BUILD_PROFILE=prod tns build android",
+    "ios-prod": "cross-env BUILD_PROFILE=prod tns run ios",
+    "ios-prod-build": "cross-env BUILD_PROFILE=prod tns build ios"
   },
   "nativescript": {
     "id": "org.nativescript.td",
