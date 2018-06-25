@@ -5,9 +5,12 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 import { AppComponent } from "./app.component";
-import {navigatableComponents, routes} from "./app.routing";
-import {UserService} from "./shared/services/user.service";
-import {TravelodeService} from "./shared/services/travelode.service";
+import { navigatableComponents, routes } from "./app.routing";
+
+import { UserService } from "./shared/services/user.service";
+import { TravelodeService } from "./shared/services/travelode.service";
+import { TravelodeMediaService } from "./shared/services/travelode-media.service";
+import { MediaService } from "./shared/services/media.service";
 
 @NgModule({
   imports: [
@@ -26,7 +29,9 @@ import {TravelodeService} from "./shared/services/travelode.service";
   ],
   providers: [
       UserService,
-      TravelodeService
+      TravelodeService,
+      MediaService,
+      TravelodeMediaService
   ],
   schemas: [NO_ERRORS_SCHEMA],
 })

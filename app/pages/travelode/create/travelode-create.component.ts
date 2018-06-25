@@ -72,7 +72,7 @@ export class TravelodeCreateComponent implements OnInit{
                         console.log(util.inspect(data, false, null));
                         if(data.status === 200) {
                             alert ('Travelode Created');
-                            this.router.navigate(["/travelode/list"]);
+                            this.router.navigate(["/travelode/created/"]);
                         } else {
                             alert('Bullocks !');
                         }

@@ -2,20 +2,19 @@ import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {topmost} from "ui/frame";
 import * as util from "util";
-import * as appSettings from "tns-core-modules/application-settings";
 import {TravelodeService} from "../../../shared/services/travelode.service";
 import {Travelode} from "../../../shared/models/travelode";
 
 @Component({
-    selector: "my-app-post-start",
+    selector: "my-app-travelode-created",
     moduleId: module.id,
-    templateUrl: "./post-start.component.html",
+    templateUrl: "./travelode-created.component.html",
     styleUrls: [
-        "./post-start-common.scss",
-        "./post-start.scss"
+        "./travelode-created-common.scss",
+        "./travelode-created.scss"
     ]
 })
-export class PostStartComponent implements OnInit{
+export class TravelodeCreatedComponent implements OnInit{
     private _travelodeId: number;
     private _travelode : Travelode;
 
@@ -59,13 +58,13 @@ export class PostStartComponent implements OnInit{
     }
 
     startPosting() {
-        console.log('Posting button tapped !');
+        console.log('Going to post details');
+        this.router.navigate(["/post/entry"]);
     }
 
     changeTravelode() {
         this.router.navigate(["/travelode/edit/" + this.travelodeId]);
     }
-
 
     goBack() {
         console.log('Nav button tapped !')

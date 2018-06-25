@@ -1,9 +1,12 @@
-import {LoginComponent} from "./pages/login/login.component";
-import {SignupComponent} from "./pages/signup/signup.component";
-import {TravelodeWelcomeComponent} from "./pages/travelode/welcome/travelode-welcome.component";
-import {TravelodeCreateComponent} from "./pages/travelode/create/travelode-create.component";
-import {TravelodeListComponent} from "./pages/travelode/list/travelode-list.component";
-import {PostStartComponent} from "./pages/post/start/post-start.component";
+import { LoginComponent } from "./pages/login/login.component";
+import { SignupComponent } from "./pages/signup/signup.component";
+import { TravelodeWelcomeComponent } from "./pages/travelode/welcome/travelode-welcome.component";
+import { TravelodeCreateComponent } from "./pages/travelode/create/travelode-create.component";
+import { TravelodeListComponent } from "./pages/travelode/list/travelode-list.component";
+import { TravelodeCreatedComponent } from "./pages/travelode/created/travelode-created.component";
+import { PostDetailsComponent } from "./pages/post/details/post-details.component";
+import {PostEntryComponent} from "./pages/post/entry/post-entry.component";
+import {PostSuccessComponent} from "./pages/post/success/post-success.component";
 
 export const routes = [
     {path: "", component: LoginComponent},
@@ -12,7 +15,10 @@ export const routes = [
     {path: "travelode/create", component: TravelodeCreateComponent},
     {path: "travelode/edit/:id", component: TravelodeCreateComponent},
     {path: "travelode/list", component: TravelodeListComponent},
-    {path: "post/start/:id", component: PostStartComponent},
+    {path: "travelode/created/:id", component: TravelodeCreatedComponent},
+    {path: "post/entry", component: PostEntryComponent},
+    {path: "post/details/local", component: PostDetailsComponent},
+    {path: "post/success/:id", component: PostSuccessComponent},
 ];
 
 export const navigatableComponents = [
@@ -21,5 +27,8 @@ export const navigatableComponents = [
     TravelodeWelcomeComponent,
     TravelodeCreateComponent,
     TravelodeListComponent,
-    PostStartComponent
+    TravelodeCreatedComponent,
+    PostEntryComponent,
+    PostDetailsComponent,
+    PostSuccessComponent
 ];
