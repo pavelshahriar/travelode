@@ -3,7 +3,7 @@
     <NavigationButton text="Back" android.systemIcon="ic_menu_back" (tap)="goBack()"></NavigationButton>
 </ActionBar>
 
-<StackLayout orientation="vertical" class="container" *ngIf="travelode">
+<StackLayout orientation="vertical" class="container-tight" *ngIf="travelode">
     <Label text="Your travelode is ready for new posts" class="travelode-created-heading tertiary text-center" textWrap="true"></Label>
     <Label [text]=travelode.title class="travelode-created-travelode-heading"></Label>
     <Label [text]=travelode.description class="travelode-created-travelode-detail" textWrap="true"></Label>

@@ -9,9 +9,9 @@ import { Router} from "@angular/router";
 @Component({
     selector: "my-app-post-entry",
     moduleId: module.id,
-    templateUrl: "./post-entry.component.html",
+    templateUrl: "./post-entry-camera.component.html",
 })
-export class PostEntryComponent implements OnInit {
+export class PostEntryCameraComponent implements OnInit {
 
     constructor(private router: Router) {}
 

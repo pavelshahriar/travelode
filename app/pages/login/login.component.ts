@@ -1,15 +1,14 @@
-import {Component} from "@angular/core";
-import {LoginCredential} from "../../shared/models/login-credential";
+import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
+import {Page} from "tns-core-modules/ui/page";
 import * as util from "util";
 import * as appSettings from "application-settings";
 
+import {LoginCredential} from "../../shared/models/login-credential";
 import {UserService} from "../../shared/services/user.service";
 import {TravelodeService} from "../../shared/services/travelode.service";
 import {Travelode} from "../../shared/models/travelode";
-import {Page} from "tns-core-modules/ui/page";
-import {HttpResponse} from "@angular/common/http";
-import {User} from "~/shared/models/user";
+import {User} from "../../shared/models/user";
 
 @Component({
     selector: "my-app-login",
@@ -20,9 +19,8 @@ import {User} from "~/shared/models/user";
         "./login.scss"
     ]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
     private _login_credential: LoginCredential;
-    public isLoggingIn: boolean = true;
 
     constructor(
         private router: Router,
@@ -32,6 +30,12 @@ export class LoginComponent {
     ) {
         this.login_credential = new LoginCredential();
             page.actionBarHidden = true;
+    }
+
+    ngOnInit() {
+        if(appSettings.getNumber('userId')){
+            this.router.navigate(['/post/start']);
+        }
     }
 
     get login_credential(): LoginCredential {
@@ -77,7 +81,7 @@ export class LoginComponent {
                 (data: Array<Travelode>) => {
                     // console.log(util.inspect(data, false, null));
                     if(data.length > 0) {
-                        this.router.navigate(["/travelode/list"]);
+                        this.router.navigate(["/post/start"]);
                     } else {
                         this.router.navigate(["/travelode/welcome"]);
                     }

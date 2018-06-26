@@ -3,6 +3,12 @@
     <NavigationButton text="Back" android.systemIcon="ic_menu_back" (tap)="goBack()"></NavigationButton>
 </ActionBar>
 
-<StackLayout orientation="vertical" class="container">
+<StackLayout orientation="vertical" class="container-tight">
     <Label text="Post Successful" class="post-success-heading tertiary text-center"></Label>
+    <StackLayout orientation="vertical" class="div-border-thick primary-border post-success-review" (tap)="reviewPost()">
+        <Label text="Review post"></Label>
+    </StackLayout>
+    <StackLayout orientation="vertical" class="div-border-thick tertiary-border post-success-again" (tap)="postAgain()">
+        <Label text="Post again"></Label>
+    </StackLayout>
 </StackLayout>

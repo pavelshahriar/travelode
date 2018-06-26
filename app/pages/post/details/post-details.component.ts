@@ -22,7 +22,7 @@ import { TravelodeMedia} from "../../../shared/models/travelode-media";
     ]
 })
 export class PostDetailsComponent implements OnInit {
-    private _postMedia: Media;
+    private _travelodeTitle: string;
     private _travelodeMedia: TravelodeMedia;
     private _localMedia: LocalMedia;
 
@@ -34,6 +34,8 @@ export class PostDetailsComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+        this.travelodeTitle = appSettings.getString('travelodeTitle');
+
         this.route.queryParams.subscribe(params => {
             this.localMedia = new LocalMedia(params['path']);
             const imageFromLocalFile = fromFile(this.localMedia.url);
@@ -41,12 +43,12 @@ export class PostDetailsComponent implements OnInit {
         })
     }
 
-    get postMedia(): Media {
-        return this._postMedia;
+    get travelodeTitle(): string {
+        return this._travelodeTitle;
     }
 
-    set postMedia(value: Media) {
-        this._postMedia = value;
+    set travelodeTitle(value: string) {
+        this._travelodeTitle = value;
     }
 
     get travelodeMedia(): TravelodeMedia {
@@ -66,7 +68,7 @@ export class PostDetailsComponent implements OnInit {
     }
 
     goBack() {
-        console.log('Nav button tapped !')
+        console.log('Nav button tapped !');
         topmost().goBack();
     }
 
@@ -106,5 +108,6 @@ export class PostDetailsComponent implements OnInit {
 
     switchTravelode() {
         console.log('Switch travelode tapped !')
+        this.router.navigate(['/travelode/list']);
     }
 }

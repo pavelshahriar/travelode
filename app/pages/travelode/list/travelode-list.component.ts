@@ -46,8 +46,9 @@ export class TravelodeListComponent {
     public itemTapped(item) {
         console.log("Item Tapped: ");
         // console.log(util.inspect(item, false, null));
-        this.router.navigate(["/travelode/created/" + item.id]);
+        this.router.navigate(["/post/start/"]);
         appSettings.setNumber('travelodeId', item.id);
+        appSettings.setString('travelodeTitle', item.title);
     }
 
     public createNewTapped() {

@@ -1,4 +1,29 @@
-.post-success-heading {
-  font-size: 25;
-  text-align: center;
+@import "../../../shared/styles/colors.scss";
+
+.post-success {
+
+  &-heading {
+    font-size: 25;
+    text-align: center;
+    margin-bottom: 10%;
+  }
+
+  &-review {
+    font-size: 20;
+    height: 70;
+    vertical-align: center;
+    text-align: center;
+    margin-bottom: 20;
+    color: $tertiary-color;
+  }
+
+  &-again {
+    font-size: 20;
+    height: 70;
+    vertical-align: center;
+    text-align: center;
+    background-color: $tertiary-color;
+    color: white;
+  }
+
 }

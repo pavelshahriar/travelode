@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import * as util from "util";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {topmost} from "tns-core-modules/ui/frame";
 
 @Component({
@@ -15,9 +15,12 @@ import {topmost} from "tns-core-modules/ui/frame";
 export class PostSuccessComponent implements OnInit {
     private _travelodeMediaId: number;
 
-    constructor(private route: ActivatedRoute) {}
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router) {}
 
     ngOnInit() {
+        // this.travelodeMediaId = 30;
         this.route.params.subscribe(params => {
             this.travelodeMediaId = params['id'];
             console.log('The travelode media id is : ' + this.travelodeMediaId);
@@ -36,4 +39,15 @@ export class PostSuccessComponent implements OnInit {
         console.log('Nav button tapped !')
         topmost().goBack();
     }
+
+    reviewPost() {
+        console.log('review button tapped !')
+
+    }
+
+    postAgain() {
+        console.log('Post again button tapped !')
+        this.router.navigate(['/post/start'])
+    }
+
 }

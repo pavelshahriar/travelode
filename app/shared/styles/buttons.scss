@@ -1,19 +1,21 @@
+@import "colors.scss";
+
 .btn-primary {
-  background-color: #fa9646;
+  background-color: $primary-color;
   color: white;
   padding: 15;
   border-radius: 2;
 }
 
 .btn-secondary {
-  background-color: #96c850;
+  background-color: $secondary-color;
   color: white;
   padding: 15;
   border-radius: 2;
 }
 
 .btn-tertiary {
-  background-color: #5082be;
+  background-color: $tertiary-color;
   color: white;
   padding: 15;
   border-radius: 2;

@@ -7,13 +7,13 @@
     <StackLayout orientation="vertical" *ngIf="localMedia">
         <Label text="Add description" class="post-details-heading tertiary text-center m-b-20" textWrap="true"></Label>
         <Image class="post-details-media-holder" src="{{localMedia.url}}"></Image>
-        <StackLayout orientation="vertical" class="container">
+        <StackLayout orientation="vertical" class="container-tight">
             <TextField hint="Title*" class="text-center" autocorrect="false" autocapitalizationType="none" [(ngModel)]="localMedia.title"></TextField>
             <TextView  height="100" borderColor="#DEDEDE" borderWidth="1" hint="A short story of the post*"  returnKeyType="send" class="post-details-media-details" [(ngModel)]="localMedia.story"></TextView>
             <Button text="Post" class="btn-primary post-details-create-button" (tap)="postTravelodeMedia()"></Button>
             <StackLayout orientation="horizontal" horizontalAlignment="center">
                 <Label class="post-details-travelode-label" text="Travelode: "></Label>
-                <Label class="post-details-travelode-switch tertiary" text="Travelode Name" (tap)="switchTravelode()"></Label>
+                <Label class="post-details-travelode-switch tertiary" text="{{travelodeTitle}}" (tap)="switchTravelode()"></Label>
             </StackLayout>
         </StackLayout>
     </StackLayout>
