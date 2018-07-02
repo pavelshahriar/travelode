@@ -130,7 +130,7 @@ export class PostDetailsComponent implements OnInit {
                         (data) => {
                             // console.log(util.inspect(data, false, null));
                             if (data.status === 201) {
-                                alert ('Travelode Media Created');
+                                alert ('Travelode post created');
                                 this.router.navigate(['/post/success/'+ data.body['id']])
                             } else {
                                 alert ('Bullocks !');
