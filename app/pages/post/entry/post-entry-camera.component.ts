@@ -41,7 +41,7 @@ export class PostEntryCameraComponent implements OnInit {
                     const saved = imageSource.saveToFile(path, "jpg");
                     if (saved) {
                         console.log("Image saved successfully with filename : " + fileName + " @ here : " + folder);
-                        this.router.navigate(['post/details'], {queryParams: {path: path}});
+                        this.router.navigate(['post/details/local'], {queryParams: {path: path}});
                     }
                 });
             });

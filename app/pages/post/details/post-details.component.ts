@@ -118,7 +118,7 @@ export class PostDetailsComponent implements OnInit {
             (res) => {
                 // console.log(util.inspect(res, false, null));
                 if(res['status'] === 201) {
-                    alert ('Media Created');
+                    // alert ('Media Created');
 
                     this.travelodeMedia = new TravelodeMedia();
                     this.travelodeMedia.mediaId = res['data']['id'];

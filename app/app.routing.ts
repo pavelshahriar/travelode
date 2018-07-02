@@ -22,7 +22,7 @@ export const routes = [
     {path: "travelode/updated/:id", component: TravelodeCreatedComponent},
     {path: "post/start",            component: PostStartComponent},
     {path: "post/entry/camera",     component: PostEntryCameraComponent},
-    {path: "post/details",          component: PostDetailsComponent},
+    {path: "post/details/local",    component: PostDetailsComponent},
     {path: "post/review/:id",       component: PostReviewComponent},
     {path: "post/edit/:id",         component: PostDetailsComponent},
     {path: "post/success/:id",      component: PostSuccessComponent},
