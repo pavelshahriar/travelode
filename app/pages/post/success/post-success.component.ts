@@ -31,12 +31,10 @@ export class PostSuccessComponent implements OnInit {
         if (this.travelodeId && this.travelodeTitle) {
             this.infoMessageHide = (appSettings.getBoolean('postSuccessfulInfoHide'+this.travelodeId)) ?
                 appSettings.getBoolean('postSuccessfulInfoHide'+this.travelodeId) : false;
-
-            this.travelodeMediaId = 30;
-            // this.route.params.subscribe(params => {
-            //     this.travelodeMediaId = params['id'];
-            //     console.log('The travelode media id is : ' + this.travelodeMediaId);
-            // })
+            this.route.params.subscribe(params => {
+                this.travelodeMediaId = params['id'];
+                console.log('The travelode media id is : ' + this.travelodeMediaId);
+            })
         } else {
             this.router.navigate(['/travelode/list'])
         }
