@@ -1,11 +1,11 @@
 <ActionBar class="action-bar">
     <Label text="travelode" class="font-weight-bold primary"></Label>
-    <NavigationButton text="Back" android.systemIcon="ic_menu_back" (tap)="goBack()"></NavigationButton>
+    <NavigationButton *ngIf="canGoBack" text="Back" android.systemIcon="ic_menu_back" (tap)="goBack()"></NavigationButton>
 </ActionBar>
 
 <StackLayout orientation="vertical" class="container-tight">
     <Label text="Create a new travelode" class="travelode-heading tertiary text-center"></Label>
     <TextField hint="Title*" class="travelode-create-title" [(ngModel)]="travelode.title"></TextField>
     <TextView  height="100" borderColor="#DEDEDE" borderWidth="1" hint="A short description of your travelode"  returnKeyType="send" class="travelode-create-desc" [(ngModel)]="travelode.description"></TextView>
-    <Button [text]="(travelodeId === -1) ? 'Create' : 'Update'" class="btn-tertiary travelode-create-button" (tap)="createTravelode()"></Button>
+    <Button [text]="(editing) ? 'Create' : 'Update'" class="btn-tertiary travelode-create-button" (tap)="createTravelode()"></Button>
 </StackLayout>

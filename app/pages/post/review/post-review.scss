@@ -1,0 +1,54 @@
+.post-review {
+
+  &-heading {
+    font-size: 25;
+    text-align: center;
+    margin-bottom: 20;
+  }
+
+  &-media {
+
+    &-holder {
+      transform: rotate(90deg);
+      margin-bottom: 20;
+    }
+  }
+
+  &-title {
+    font-size: 25;
+    font-weight: 700;
+  }
+
+  &-caption {
+    font-size: 20;
+    height: 65;
+  }
+
+  &-buttons {
+    margin-top: 20;
+    margin-bottom: 20;
+    justify-content: space-around;
+
+    &-edit {
+      width: 40%;
+      align-self: flex-start;
+    }
+
+    &-ok {
+      width: 40%;
+      align-self: flex-end;
+    }
+  }
+
+  &-travelode {
+
+    &-label {
+      font-size: 15;
+    }
+
+    &-switch {
+      font-size: 15;
+      text-decoration: underline;
+    }
+  }
+}

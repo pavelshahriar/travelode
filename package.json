@@ -43,6 +43,7 @@
     "nativescript-angular": "~5.3.0",
     "nativescript-background-http": "^3.2.7",
     "nativescript-camera": "^4.0.2",
+    "nativescript-checkbox": "^3.0.3",
     "nativescript-geolocation": "^4.2.6",
     "nativescript-mediafilepicker": "^1.0.7",
     "nativescript-theme-core": "~1.0.4",

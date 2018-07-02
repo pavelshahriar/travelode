@@ -1,8 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { topmost } from "ui/frame";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
+import {RouterExtensions} from "nativescript-angular";
 import * as appSettings from "tns-core-modules/application-settings";
-import * as util from "util";
 
 @Component({
     selector: "my-app-post-start",
@@ -14,18 +13,31 @@ import * as util from "util";
     ]
 })
 export class PostStartComponent implements OnInit {
+    private _canGoBack: boolean;
     private _travelodeId: number;
     private _travelodeTitle: string;
 
-    constructor(private router: Router) {}
+    constructor(
+        private router: Router,
+        private nav: RouterExtensions
+    ) {}
 
     ngOnInit() {
+        this.canGoBack = this.nav.canGoBack();
         this.travelodeId = appSettings.getNumber('travelodeId');
         this.travelodeTitle = appSettings.getString('travelodeTitle');
 
         if (typeof this.travelodeId == "undefined"){
             this.router.navigate(['/travelode/list'])
         }
+    }
+
+    get canGoBack(): boolean {
+        return this._canGoBack;
+    }
+
+    set canGoBack(value: boolean) {
+        this._canGoBack = value;
     }
 
     get travelodeId(): number {
@@ -45,7 +57,8 @@ export class PostStartComponent implements OnInit {
     }
     goBack() {
         console.log('Nav button tapped !');
-        topmost().goBack();
+        // topmost().goBack();
+        this.nav.back();
     }
 
     switchTravelode() {

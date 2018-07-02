@@ -2,6 +2,10 @@
 
 .post-success {
 
+  &-buttons {
+    margin-bottom: 200vh;
+  }
+
   &-heading {
     font-size: 25;
     text-align: center;
@@ -10,7 +14,8 @@
 
   &-review {
     font-size: 20;
-    height: 70;
+    width: 250vw;
+    height: 60;
     vertical-align: center;
     text-align: center;
     margin-bottom: 20;
@@ -19,11 +24,35 @@
 
   &-again {
     font-size: 20;
-    height: 70;
+    width: 250vw;
+    height: 60;
     vertical-align: center;
     text-align: center;
     background-color: $tertiary-color;
     color: white;
+  }
+
+  &-info-box {
+    border-radius: 10;
+    padding: 15em;
+    color: black;
+    font-size: 15;
+    background-color: $secondary-color;
+
+    &-travelode {
+
+      &-title {
+        font-size: 18;
+        font-weight: 700;
+        text-align: center;
+      }
+
+      &-change {
+        text-align: center;
+        text-decoration: underline;
+      }
+    }
+
   }
 
 }

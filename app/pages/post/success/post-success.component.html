@@ -1,14 +1,24 @@
 <ActionBar class="action-bar">
     <Label text="travelode" class="font-weight-bold primary"></Label>
-    <NavigationButton text="Back" android.systemIcon="ic_menu_back" (tap)="goBack()"></NavigationButton>
+    <NavigationButton *ngIf="canGoBack" text="Back" android.systemIcon="ic_menu_back" (tap)="goBack()"></NavigationButton>
 </ActionBar>
 
 <StackLayout orientation="vertical" class="container-tight">
-    <Label text="Post Successful" class="post-success-heading tertiary text-center"></Label>
-    <StackLayout orientation="vertical" class="div-border-thick primary-border post-success-review" (tap)="reviewPost()">
-        <Label text="Review post"></Label>
+    <StackLayout class="post-success-buttons">
+        <Label text="Post Successful" class="post-success-heading tertiary text-center"></Label>
+        <StackLayout orientation="vertical" class="div-border-thick primary-border post-success-review" (tap)="reviewPost()">
+            <Label text="Review post"></Label>
+        </StackLayout>
+        <StackLayout orientation="vertical" class="div-border-thick tertiary-border post-success-again" (tap)="postAgain()">
+            <Label text="Post again"></Label>
+        </StackLayout>
     </StackLayout>
-    <StackLayout orientation="vertical" class="div-border-thick tertiary-border post-success-again" (tap)="postAgain()">
-        <Label text="Post again"></Label>
+    <StackLayout *ngIf="!infoMessageHide" class="post-success-info-box" orientation="vertical">
+        <Label text="All new posts are by default published under the latest travelode in use:" textWrap="true" marginBottom="20"></Label>
+        <Label text="{{travelodeTitle}}" (tap)="changeTravelode()" class="post-success-info-box-travelode-title"></Label>
+        <Label text="Change?" (tap)="changeTravelode()" class="post-success-info-box-travelode-change"></Label>
+        <StackLayout orientation="horizontal" marginTop="20">
+            <Checkbox text="Don't show this message to me again" checked="{{infoMessageHide}}" (tap)="hideInfoMessage()"></Checkbox>
+        </StackLayout>
     </StackLayout>
 </StackLayout>

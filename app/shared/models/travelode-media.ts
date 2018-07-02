@@ -9,9 +9,6 @@ export class TravelodeMedia {
     displayDate: string;
     displayLocationId ?: number;
     isCover: boolean;
-    userId: number;
-    created: string;
-    updated: string;
 
     constructor() {}
 }

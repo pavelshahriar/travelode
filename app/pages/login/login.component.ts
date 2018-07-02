@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {Page} from "tns-core-modules/ui/page";
 import * as util from "util";
 import * as appSettings from "application-settings";
+import * as Dialogs from "tns-core-modules/ui/dialogs"
 
 import {LoginCredential} from "../../shared/models/login-credential";
 import {UserService} from "../../shared/services/user.service";
@@ -57,7 +58,7 @@ export class LoginComponent implements OnInit{
                     (data: Array<User>) => {
                         // console.log(util.inspect(result[0], false, null));
                         if (data.length === 0) {
-                            alert("Oops ! Couldn't find you anywhere in the universe. Try Again?");
+                            Dialogs.alert("Oops ! Couldn't find you anywhere in the universe. Try Again?");
                         } else {
                             appSettings.setNumber('userId', data[0].id);
                             appSettings.setString('email', data[0].email);
@@ -66,12 +67,12 @@ export class LoginComponent implements OnInit{
                         }
                     },
                     (error) => {
-                        console.log(util.inspect(error, false, null));
-                        alert("Bullocks!");
+                        // console.log(util.inspect(error, false, null));
+                        Dialogs.alert("Bullocks!");
                     }
                 );
         } else {
-            alert("Where is your username and password dude ?")
+            Dialogs.alert("Where is your username and password dude ?")
         }
     }
 
@@ -81,7 +82,11 @@ export class LoginComponent implements OnInit{
                 (data: Array<Travelode>) => {
                     // console.log(util.inspect(data, false, null));
                     if(data.length > 0) {
-                        this.router.navigate(["/post/start"]);
+                        if (appSettings.getNumber('travelodeId') && appSettings.getString('travelodeTitle')) {
+                            this.router.navigate(["/post/start"]);
+                        } else {
+                            this.router.navigate(["/travelode/list"]);
+                        }
                     } else {
                         this.router.navigate(["/travelode/welcome"]);
                     }

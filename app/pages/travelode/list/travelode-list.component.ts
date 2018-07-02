@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import * as util from "util";
 import {Travelode} from "../../../shared/models/travelode";
@@ -14,7 +14,7 @@ import * as appSettings from "application-settings";
         "./travelode-list.scss"
     ]
 })
-export class TravelodeListComponent {
+export class TravelodeListComponent implements OnInit{
     private _travelodeList: Array<Travelode>;
 
     constructor(
@@ -23,6 +23,12 @@ export class TravelodeListComponent {
 
         this._travelodeList = [];
         this.getTravelodesList();
+    }
+
+    ngOnInit() {
+        if (!appSettings.getNumber('userId')){
+            this.router.navigate(['/login'])
+        }
     }
 
     get travelodeList(): Array<Travelode> {
@@ -38,7 +44,7 @@ export class TravelodeListComponent {
             .subscribe(
                 (data: Array<Travelode>) => {
                     this.travelodeList = data;
-                    console.log(util.inspect(this.travelodeList, false, null));
+                    // console.log(util.inspect(this.travelodeList, false, null));
                 }
             );
     }

@@ -20,6 +20,15 @@ export class TravelodeService {
         return this.http.post(url, body, {headers: headers, observe: "response"});
     }
 
+    update(tr: Travelode) {
+        const url = Config.apiUrl + "travelode/" + tr.id;
+        delete tr.id;
+        const body = JSON.stringify(tr);
+        const headers = this.createRequestHeader();
+
+        return this.http.put(url, body, {headers: headers, observe: "response"});
+    }
+
     getAllByUserId(id: number) {
         // console.log(id);
         // console.log(util.inspect(Config, false, null));

@@ -8,19 +8,24 @@ import { PostDetailsComponent }      from "./pages/post/details/post-details.com
 import { PostEntryCameraComponent }  from "./pages/post/entry/post-entry-camera.component";
 import { PostSuccessComponent }      from "./pages/post/success/post-success.component";
 import { PostStartComponent }        from "./pages/post/start/post-start.component";
+import {PostReviewComponent}         from "./pages/post/review/post-review.component";
 
 export const routes = [
-    {path: "",                      component: LoginComponent},
-    // {path: "", component: PostSuccessComponent},
+    // {path: "",                      component: LoginComponent},
+    {path: "", component: PostSuccessComponent},
+    {path: "login",                 component: LoginComponent},
     {path: "signup",                component: SignupComponent},
     {path: "travelode/welcome",     component: TravelodeWelcomeComponent},
+    {path: "travelode/list",        component: TravelodeListComponent},
     {path: "travelode/create",      component: TravelodeCreateComponent},
     {path: "travelode/edit/:id",    component: TravelodeCreateComponent},
-    {path: "travelode/list",        component: TravelodeListComponent},
     {path: "travelode/created/:id", component: TravelodeCreatedComponent},
+    {path: "travelode/updated/:id", component: TravelodeCreatedComponent},
     {path: "post/start",            component: PostStartComponent},
     {path: "post/entry/camera",     component: PostEntryCameraComponent},
-    {path: "post/details/local",    component: PostDetailsComponent},
+    {path: "post/details",          component: PostDetailsComponent},
+    {path: "post/review/:id",       component: PostReviewComponent},
+    {path: "post/edit/:id",         component: PostDetailsComponent},
     {path: "post/success/:id",      component: PostSuccessComponent},
 ];
 
@@ -34,5 +39,6 @@ export const navigatableComponents = [
     PostStartComponent,
     PostEntryCameraComponent,
     PostDetailsComponent,
+    PostReviewComponent,
     PostSuccessComponent
 ];

@@ -3,6 +3,7 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
+import { TNSCheckBoxModule } from 'nativescript-checkbox/angular';
 
 import { AppComponent } from "./app.component";
 import { navigatableComponents, routes } from "./app.routing";
@@ -18,7 +19,8 @@ import { MediaService } from "./shared/services/media.service";
       NativeScriptFormsModule,
       NativeScriptHttpClientModule,
       NativeScriptRouterModule,
-      NativeScriptRouterModule.forRoot(routes)
+      NativeScriptRouterModule.forRoot(routes),
+      TNSCheckBoxModule
   ],
   declarations: [
       AppComponent,

@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
-import {topmost} from "ui/frame";
+import {RouterExtensions} from "nativescript-angular";
 import * as util from "util";
 import {TravelodeService} from "../../../shared/services/travelode.service";
 import {Travelode} from "../../../shared/models/travelode";
@@ -14,14 +14,33 @@ import {Travelode} from "../../../shared/models/travelode";
         "./travelode-created.scss"
     ]
 })
-export class TravelodeCreatedComponent implements OnInit{
+export class TravelodeCreatedComponent implements OnInit {
+    private _canGoBack: boolean;
     private _travelodeId: number;
     private _travelode : Travelode;
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
+        private nav: RouterExtensions,
         private travelodeService: TravelodeService) {}
+
+    ngOnInit() {
+        this.canGoBack = this.nav.canGoBack();
+        this.route.params.subscribe(params => {
+            this.travelodeId = +params['id'];
+            // console.log('The travelode id is : ' + this.travelodeId);
+            this.getTravelodeById();
+        })
+    }
+
+    get canGoBack(): boolean {
+        return this._canGoBack;
+    }
+
+    set canGoBack(value: boolean) {
+        this._canGoBack = value;
+    }
 
     get travelodeId(): number {
         return this._travelodeId;
@@ -39,19 +58,11 @@ export class TravelodeCreatedComponent implements OnInit{
         this._travelode = value;
     }
 
-    ngOnInit() {
-        this.route.params.subscribe(params => {
-            this.travelodeId = +params['id'];
-            console.log('The travelode id is : ' + this.travelodeId);
-            this.getTravelodeById();
-        })
-    }
-
     getTravelodeById () {
         this.travelodeService.getOneByTravelodeId(this.travelodeId)
             .subscribe(
                 (data: Travelode) => {
-                    console.log(util.inspect(data, false, null));
+                    // console.log(util.inspect(data, false, null));
                     this.travelode = data[0];
                 }
             );
@@ -68,6 +79,7 @@ export class TravelodeCreatedComponent implements OnInit{
 
     goBack() {
         console.log('Nav button tapped !')
-        topmost().goBack();
+        // topmost().goBack();
+        this.nav.back();
     }
 }
