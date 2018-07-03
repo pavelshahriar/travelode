@@ -5,6 +5,7 @@ import * as util from "util";
 import * as appSettings from "application-settings";
 import * as Dialogs from "tns-core-modules/ui/dialogs"
 
+import {LoadingIndicatorHelper} from "../../shared/helpers/loading-indicator-helper";
 import {LoginCredential} from "../../shared/models/login-credential";
 import {UserService} from "../../shared/services/user.service";
 import {TravelodeService} from "../../shared/services/travelode.service";
@@ -52,12 +53,14 @@ export class LoginComponent implements OnInit{
     }
 
     login() {
+        LoadingIndicatorHelper.showLoader();
         if (this.login_credential.email && this.login_credential.password) {
             this.userService.login(this.login_credential)
                 .subscribe(
                     (data: Array<User>) => {
                         // console.log(util.inspect(result[0], false, null));
                         if (data.length === 0) {
+                            LoadingIndicatorHelper.hideLoader();
                             Dialogs.alert("Oops ! Couldn't find you anywhere in the universe. Try Again?");
                         } else {
                             appSettings.setNumber('userId', data[0].id);
@@ -68,10 +71,12 @@ export class LoginComponent implements OnInit{
                     },
                     (error) => {
                         // console.log(util.inspect(error, false, null));
+                        LoadingIndicatorHelper.hideLoader();
                         Dialogs.alert("Bullocks!");
                     }
                 );
         } else {
+            LoadingIndicatorHelper.hideLoader();
             Dialogs.alert("Where is your username and password dude ?")
         }
     }
@@ -81,6 +86,7 @@ export class LoginComponent implements OnInit{
             .subscribe(
                 (data: Array<Travelode>) => {
                     // console.log(util.inspect(data, false, null));
+                    LoadingIndicatorHelper.hideLoader();
                     if(data.length > 0) {
                         if (appSettings.getNumber('travelodeId') && appSettings.getString('travelodeTitle')) {
                             this.router.navigate(["/post/start"]);

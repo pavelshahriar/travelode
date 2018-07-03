@@ -4,6 +4,7 @@ import * as camera from "nativescript-camera";
 import { ImageSource } from "tns-core-modules/image-source";
 import * as FileSystem from "tns-core-modules/file-system";
 import { Router} from "@angular/router";
+import { RouterExtensions } from "nativescript-angular";
 
 
 @Component({
@@ -13,26 +14,25 @@ import { Router} from "@angular/router";
 })
 export class PostEntryCameraComponent implements OnInit {
 
-    constructor(private router: Router) {}
+    constructor(
+        private router: Router,
+        private nav: RouterExtensions
+    ) {}
 
     ngOnInit() {
         this.takePicture();
     }
 
     takePicture() {
-        let isAvailable = camera.isAvailable();
+        let options = {
+            width: 500,
+            height: 500,
+            keepAspectRatio: false,
+            saveToGallery: true
+        };
 
-        if (isAvailable) {
-            camera.requestPermissions();
-
-            let options = {
-                width: 500,
-                height: 500,
-                keepAspectRatio: false,
-                saveToGallery: true
-            };
-
-            camera.takePicture(options).then((imageAsset) => {
+        camera.takePicture(options)
+            .then((imageAsset) => {
                 const source = new ImageSource();
                 source.fromAsset(imageAsset).then((imageSource) => {
                     const folder = FileSystem.knownFolders.documents().path;
@@ -44,12 +44,15 @@ export class PostEntryCameraComponent implements OnInit {
                         this.router.navigate(['post/details/local'], {queryParams: {path: path}});
                     }
                 });
+            })
+            .catch(() => {
+                topmost().goBack();
             });
-        }
     }
 
     goBack() {
-        console.log('Nav button tapped !')
-        topmost().goBack();
+        console.log('Nav button tapped !');
+        // topmost().goBack();
+        this.nav.back();
     }
 }

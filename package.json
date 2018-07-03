@@ -25,7 +25,7 @@
       "version": "4.0.1"
     },
     "tns-android": {
-      "version": "4.0.1"
+      "version": "4.1.3"
     }
   },
   "dependencies": {
@@ -45,8 +45,7 @@
     "nativescript-camera": "^4.0.2",
     "nativescript-checkbox": "^3.0.3",
     "nativescript-geolocation": "^4.2.6",
-    "nativescript-mediafilepicker": "^1.0.7",
-    "nativescript-permissions": "^1.2.3",
+    "nativescript-loading-indicator": "^2.4.0",
     "nativescript-theme-core": "~1.0.4",
     "reflect-metadata": "~0.1.8",
     "rxjs": "~6.1.0",

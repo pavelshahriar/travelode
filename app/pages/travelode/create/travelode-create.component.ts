@@ -2,6 +2,8 @@ import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {RouterExtensions} from "nativescript-angular";
 import * as util from "util";
+
+import {LoadingIndicatorHelper} from "../../../shared/helpers/loading-indicator-helper";
 import {Travelode} from "../../../shared/models/travelode";
 import {TravelodeService} from "../../../shared/services/travelode.service";
 import * as appSettings from "application-settings";
@@ -31,13 +33,20 @@ export class TravelodeCreateComponent implements OnInit {
 
     ngOnInit() {
         this.canGoBack = this.nav.canGoBack();
-
         this.route.params.subscribe(params => {
             if (params['id']) {
                 this.editing = true;
                 this.travelodeId = +params['id'];
                 console.log('The travelode id is : ' + this.travelodeId);
-                this.getTravelodeById();
+                LoadingIndicatorHelper.showLoader();
+                this.travelodeService.getOneByTravelodeId(this.travelodeId)
+                    .subscribe(
+                        (data) => {
+                            this.travelode = data[0];
+                            LoadingIndicatorHelper.hideLoader();
+                            // console.log(util.inspect(this.travelode, false, null));
+                        }
+                    );
             }
         })
     }
@@ -74,44 +83,35 @@ export class TravelodeCreateComponent implements OnInit {
         this._travelode = value;
     }
 
-    getTravelodeById() {
-        this.travelodeService.getOneByTravelodeId(this.travelodeId)
-            .subscribe(
-                (data) => {
-                    this.travelode = data[0];
-                    // console.log(util.inspect(this.travelode, false, null));
-                }
-            );
-    }
-
-
     createTravelode() {
         if (this.travelode.title) {
             this.travelode.userId = appSettings.getNumber('userId');
 
+            LoadingIndicatorHelper.showLoader();
             if(this.editing) {
                 this.travelode.id = this.travelodeId;
                 this.travelodeService.update(this.travelode)
                     .subscribe((data) => {
+                        LoadingIndicatorHelper.hideLoader();
                         if (data.status === 200) {
                             alert ('Travelode Updated');
                             this.router.navigate(["/travelode/updated/" + this.travelodeId]);
                         }
                     }
                 );
-            }
-            this.travelodeService.create(this.travelode)
-                .subscribe(
-                    (data) => {
+            } else {
+                this.travelodeService.create(this.travelode)
+                    .subscribe((data) => {
                         // console.log(util.inspect(data, false, null));
+                        LoadingIndicatorHelper.hideLoader();
                         if(data.status === 200) {
                             alert ('Travelode Created');
                             this.router.navigate(["/travelode/created/"]);
                         } else {
                             alert('Bullocks !');
                         }
-                    }
-                );
+                    });
+            }
         } else {
             alert("Whats a Travelode without a title? Tell me!")
         }

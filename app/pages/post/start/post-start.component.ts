@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import {RouterExtensions} from "nativescript-angular";
+import { RouterExtensions } from "nativescript-angular";
+import * as camera from "nativescript-camera";
 import * as appSettings from "tns-core-modules/application-settings";
 
 @Component({
@@ -55,6 +56,7 @@ export class PostStartComponent implements OnInit {
     set travelodeTitle(value: string) {
         this._travelodeTitle = value;
     }
+
     goBack() {
         console.log('Nav button tapped !');
         // topmost().goBack();
@@ -68,7 +70,17 @@ export class PostStartComponent implements OnInit {
 
     cameraSelected() {
         console.log('Camera icon tapped !');
-        this.router.navigate(['/post/entry/camera']);
+        if(!camera.isAvailable()) {
+            alert('Dude change your phone, it doesnt have any camera!');
+        } else {
+            camera.requestPermissions()
+                .then(() => {
+                    this.router.navigate(['/post/entry/camera']);
+                })
+                .catch(() => {
+                    alert('Ummh, how do you plan on taking photo without giving access?')
+                });
+        }
     }
 
     gallerySelected() {

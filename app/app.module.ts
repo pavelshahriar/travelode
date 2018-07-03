@@ -12,6 +12,7 @@ import { UserService } from "./shared/services/user.service";
 import { TravelodeService } from "./shared/services/travelode.service";
 import { TravelodeMediaService } from "./shared/services/travelode-media.service";
 import { MediaService } from "./shared/services/media.service";
+import { LoadingIndicatorHelper } from "./shared/helpers/loading-indicator-helper";
 
 @NgModule({
   imports: [

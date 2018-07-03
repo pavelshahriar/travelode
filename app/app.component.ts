@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import * as Permissions from "nativescript-permissions";
+import {LoadingIndicatorHelper} from "./shared/helpers/loading-indicator-helper";
 
 declare var android: any;
 
@@ -9,18 +9,9 @@ declare var android: any;
 })
 export class AppComponent implements OnInit{
 
-    constructor() {}
-
-    ngOnInit() {
-        this.getCameraPermission();
+    constructor() {
+        new LoadingIndicatorHelper();
     }
 
-    public getCameraPermission() {
-        Permissions.requestPermission(android.Manifest.permission.CAMERA, "Needed for camera operations").then(() => {
-          console.log("Permission granted!");
-        }).catch(() => {
-          console.log("Permission is not granted (sadface)");
-        });
-    }
-
+    ngOnInit() {}
 }
