@@ -1,6 +1,5 @@
 <ActionBar class="action-bar">
     <Label text="travelode" class="font-weight-bold primary"></Label>
-    <NavigationButton *ngIf="canGoBack" text="Back" android.systemIcon="ic_menu_back" (tap)="goBack()"></NavigationButton>
 </ActionBar>
 
 <ScrollView orientation="vertical">
@@ -11,7 +10,10 @@
         <StackLayout orientation="vertical" class="container-tight">
             <TextField hint="Title*" class="text-center" autocorrect="false" autocapitalizationType="none" [(ngModel)]="localMedia.title"></TextField>
             <TextView  height="100" borderColor="#DEDEDE" borderWidth="1" hint="A short story of the post*"  returnKeyType="send" class="post-details-media-details" [(ngModel)]="localMedia.story"></TextView>
-            <Button text="Post" class="btn-primary post-details-create-button" (tap)="postTravelodeMedia()"></Button>
+            <FlexboxLayout orientation="horizontal" class="post-details-buttons">
+                <Button text="Cancel" class="btn-secondary post-details-buttons-button" (tap)="cancel()"></Button>
+                <Button text="Post" class="btn-primary post-details-buttons-button" (tap)="postTravelodeMedia()"></Button>
+            </FlexboxLayout>
             <StackLayout orientation="horizontal" horizontalAlignment="center">
                 <Label class="post-details-travelode-label" text="Travelode: "></Label>
                 <Label class="post-details-travelode-switch tertiary" text="{{travelodeTitle}}" (tap)="switchTravelode()"></Label>

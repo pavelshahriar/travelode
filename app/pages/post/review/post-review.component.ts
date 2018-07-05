@@ -38,7 +38,16 @@ export class PostReviewComponent implements OnInit {
                         }
                     );
             }
-        })
+        });
+
+                // this.travelodeMediaService.getOneById(32)
+                //     .subscribe(
+                //         (data) => {
+                //             console.log(util.inspect(data, false, null));
+                //             this.travelodeMedia = data;
+                //         }
+                //     );
+
     }
 
     get canGoBack(): boolean {

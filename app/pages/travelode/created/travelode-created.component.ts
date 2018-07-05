@@ -69,8 +69,8 @@ export class TravelodeCreatedComponent implements OnInit {
     }
 
     startPosting() {
-        console.log('Going to post details');
-        this.router.navigate(["/post/entry"]);
+        console.log('Going to post start');
+        this.router.navigate(["/post/start/"]);
     }
 
     changeTravelode() {

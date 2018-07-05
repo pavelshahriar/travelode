@@ -12,6 +12,7 @@ import {PostReviewComponent}         from "./pages/post/review/post-review.compo
 
 export const routes = [
     {path: "",                      component: LoginComponent},
+    // {path: "",                      component: PostReviewComponent},
     {path: "login",                 component: LoginComponent},
     {path: "signup",                component: SignupComponent},
     {path: "travelode/welcome",     component: TravelodeWelcomeComponent},

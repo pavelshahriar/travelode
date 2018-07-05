@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import {RouterExtensions} from "nativescript-angular";
+// import {RouterExtensions} from "nativescript-angular";
 import { fromFile } from "tns-core-modules/image-source";
 import * as appSettings from "tns-core-modules/application-settings";
 import * as util from "util";
@@ -10,7 +10,6 @@ import { LocalMedia } from "../../../shared/models/local-media";
 import { MediaService } from "../../../shared/services/media.service";
 import { TravelodeMediaService } from "../../../shared/services/travelode-media.service";
 import { TravelodeMedia} from "../../../shared/models/travelode-media";
-
 
 @Component({
     selector: "my-app-post-details",
@@ -31,13 +30,11 @@ export class PostDetailsComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private nav: RouterExtensions,
         private mediaService: MediaService,
         private travelodeMediaService: TravelodeMediaService
     ) {}
 
     ngOnInit() {
-        this.canGoBack = this.nav.canGoBack();
         this.travelodeTitle = appSettings.getString('travelodeTitle');
 
         const entryPoint = (this.router.url).split('/')[2];
@@ -111,47 +108,49 @@ export class PostDetailsComponent implements OnInit {
         this._localMedia = value;
     }
 
-    goBack() {
-        console.log('Nav button tapped !');
-        // topmost().goBack();
-        this.nav.back();
-    }
-
     postTravelodeMedia() {
         console.log('Post media button tapped !');
-        LoadingIndicatorHelper.showLoader();
-        this.mediaService.create(this.localMedia.url).subscribe(
-            (res) => {
-                // console.log(util.inspect(res, false, null));
-                if(res['status'] === 201) {
-                    // alert ('Media Created');
+        if (this.localMedia.title && this.localMedia.story) {
+            LoadingIndicatorHelper.showLoader();
+            this.mediaService.create(this.localMedia.url).subscribe(
+                (res) => {
+                    // console.log(util.inspect(res, false, null));
+                    if(res['status'] === 201) {
+                        // alert ('Media Created');
 
-                    this.travelodeMedia = new TravelodeMedia();
-                    this.travelodeMedia.mediaId = res['data']['id'];
-                    this.travelodeMedia.travelodeId = appSettings.getNumber('travelodeId');
-                    this.travelodeMedia.title = this.localMedia.title;
-                    this.travelodeMedia.caption = this.localMedia.story;
+                        this.travelodeMedia = new TravelodeMedia();
+                        this.travelodeMedia.mediaId = res['data']['id'];
+                        this.travelodeMedia.travelodeId = appSettings.getNumber('travelodeId');
+                        this.travelodeMedia.title = this.localMedia.title;
+                        this.travelodeMedia.caption = this.localMedia.story;
 
-                    this.travelodeMediaService.create(this.travelodeMedia).subscribe(
-                        (data) => {
-                            // console.log(util.inspect(data, false, null));
-                            LoadingIndicatorHelper.hideLoader();
-                            if (data.status === 201) {
-                                alert ('Travelode post created');
-                                this.router.navigate(['/post/success/'+ data.body['id']])
-                            } else {
-                                alert ('Bullocks !');
+                        this.travelodeMediaService.create(this.travelodeMedia).subscribe(
+                            (data) => {
+                                // console.log(util.inspect(data, false, null));
+                                LoadingIndicatorHelper.hideLoader();
+                                if (data.status === 201) {
+                                    alert ('Travelode post created');
+                                    this.router.navigate(['/post/success/'+ data.body['id']])
+                                } else {
+                                    alert ('Bullocks !');
+                                }
                             }
-                        }
-                    );
+                        );
 
-                } else {
-                    LoadingIndicatorHelper.hideLoader();
-                    alert('Bullocks !');
+                    } else {
+                        LoadingIndicatorHelper.hideLoader();
+                        alert('Bullocks !');
+                    }
+
                 }
+            );
+        } else {
+            alert('We need the title and caption to save it. Lets put some info there. Ok ?')
+        }
+    }
 
-            }
-        );
+    cancel() {
+        this.router.navigate(['/post/start/'])
     }
 
     switchTravelode() {

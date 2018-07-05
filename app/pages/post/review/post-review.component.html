@@ -6,11 +6,10 @@
 <StackLayout orientation="vertical" *ngIf="travelodeMedia" class="container-loose">
     <Label text="Review post" class="post-review-heading tertiary text-center" textWrap="true"></Label>
     <Image class="post-review-media-holder" src="{{travelodeMedia.media.url}}"></Image>
-    <GridLayout rows="auto, auto" columns="auto, auto">
+    <StackLayout rows="auto, auto" columns="auto, auto">
         <Label text="{{travelodeMedia.title}}" class="post-review-title" row="0" col="0" colSpan="2"></Label>
         <Label text="{{travelodeMedia.caption}}" class="post-review-caption" row="1" col="0" colSpan="2" textWrap="true"></Label>
-
-    </GridLayout>
+    </StackLayout>
     <FlexboxLayout orientation="horizontal" class="post-review-buttons" flexDirection="row" flexWrap="wrap" >
         <Button text="Edit" class="btn-primary post-review-buttons-edit" (tap)="edit()"></Button>
         <Button text="All Ok" class="btn-secondary post-review-buttons-ok" (tap)="ok()"></Button>
