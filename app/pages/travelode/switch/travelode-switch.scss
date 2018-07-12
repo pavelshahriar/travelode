@@ -1,6 +1,6 @@
 @import "../../../shared/styles/colors.scss";
 
-.travelode-list {
+.travelode-switch {
 
   &-heading {
     font-size: 25;
@@ -8,8 +8,19 @@
     margin-bottom: 20;
   }
 
+  &-instruction {
+    font-size: 15;
+    margin-bottom: 20;
+  }
+
   &-items {
     font-size: 15;
+  }
+
+  &-selected {
+    background-color: $secondary-color;
+    vertical-align: center;
+    border-radius: 5;
   }
 
   &-year {
@@ -38,6 +49,11 @@
     &-title {
       color: $tertiary-color;
       text-decoration: underline;
+    }
+
+    &-selected {
+      text-align: right;
+      width: 100%;
     }
   }
 }

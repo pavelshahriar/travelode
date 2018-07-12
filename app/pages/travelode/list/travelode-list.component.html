@@ -1,5 +1,6 @@
 <ActionBar class="action-bar">
     <Label text="travelode" class="font-weight-bold primary"></Label>
+    <NavigationButton *ngIf="canGoBack" text="Back" android.systemIcon="ic_menu_back" (tap)="goBack()"></NavigationButton>
     <ActionItem
             (tap)="createNewTapped()"
             android.position="right"
@@ -9,14 +10,27 @@
 </ActionBar>
 
 <StackLayout orientation="vertical" class="container-tight">
-    <Label text="Your Travelodes" class="travelode-heading tertiary text-center"></Label>
+    <Label text="Browse travelodes" class="travelode-list-heading tertiary text-center"></Label>
 
-    <ListView [items]="travelodeList" class="travelode-list">
-        <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
-            <StackLayout [class.odd]="odd" [class.even]="even" (tap)="itemTapped(item)">
-                <Label [text]=item.title height="30" class="travelode-list-item"></Label>
+    <StackLayout *ngIf="travelodeList" class="travelode-list-items">
+        <StackLayout *ngFor="let trY of travelodeList.travelodesByYear">
+            <Label text="{{trY.year}}" class="travelode-list-year"></Label>
+
+            <StackLayout *ngFor="let trM of trY.travelodesByMonth">
+                <Label text="{{trM.monthName}}" class="travelode-list-month"></Label>
+
+                <StackLayout *ngFor="let trD of trM.travelodesByDate">
+
+                    <StackLayout *ngFor="let tr of trD.travelodes" orientation="horizontal" class="travelode-list-day">
+
+                        <Label text="{{trD.day}}" class="travelode-list-day-date"></Label>
+                        <Label text="{{tr.title}}" class="travelode-list-day-title" (tap)="itemTapped(tr)"></Label>
+
+                    </StackLayout>
+
+                </StackLayout>
             </StackLayout>
-        </ng-template>
-    </ListView>
+        </StackLayout>
+    </StackLayout>
 
 </StackLayout>

@@ -5,7 +5,7 @@ declare var android: any;
 
 @Component({
   selector: "my-app",
-  template: "<page-router-outlet></page-router-outlet>"
+  templateUrl: "./app.component.html"
 })
 export class AppComponent implements OnInit{
 

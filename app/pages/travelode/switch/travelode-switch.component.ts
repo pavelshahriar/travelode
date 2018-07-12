@@ -12,23 +12,24 @@ import { LoadingIndicatorHelper } from "~/shared/helpers/loading-indicator-helpe
 
 
 @Component({
-    selector: "my-app-travelode-list",
+    selector: "my-app-switch-list",
     moduleId: module.id,
-    templateUrl: "./travelode-list.component.html",
+    templateUrl: "./travelode-switch.component.html",
     styleUrls: [
-        "./travelode-list.scss",
-        "./travelode-list-common.scss"
+        "./travelode-switch.scss",
+        "./travelode-switch-common.scss"
     ]
 })
-export class TravelodeListComponent implements OnInit{
+export class TravelodeSwitchComponent implements OnInit{
     private _canGoBack: boolean;
     private _travelodeList: TravelodeListUi;
 
     constructor(
         private router: Router,
-        private nav: RouterExtensions,
         private travelodeService: TravelodeService,
-        private travelodeListUiHelper: TravelodeListUiHelper) {
+        private nav: RouterExtensions,
+        private travelodeListUiHelper: TravelodeListUiHelper
+    ) {
         this.canGoBack = false;
         this._travelodeList = {travelodesByYear: []};
     }
@@ -70,10 +71,16 @@ export class TravelodeListComponent implements OnInit{
             );
     }
 
+    isSelected(travelodeId: number) {
+        return (appSettings.getNumber('travelodeId') === travelodeId);
+    }
+
     itemTapped(item: Travelode) {
         console.log("Item Tapped: ");
         // console.log(util.inspect(item, false, null));
-        this.router.navigate(["/travelode/details/" + item.id]);
+        appSettings.setNumber('travelodeId', item.id);
+        appSettings.setString('travelodeTitle', item.title);
+        this.router.navigate(["/post/start/"]);
     }
 
     createNewTapped() {

@@ -1,0 +1,43 @@
+<ActionBar class="action-bar">
+    <Label text="travelode" class="font-weight-bold primary"></Label>
+    <NavigationButton *ngIf="canGoBack" text="Back" android.systemIcon="ic_menu_back" (tap)="goBack()"></NavigationButton>
+</ActionBar>
+
+<StackLayout orientation="vertical" class="container-tight">
+    <Label text="Browse travelodes" class="travelode-details-heading tertiary text-center"></Label>
+
+    <StackLayout *ngIf="(!emptyTravelode)">
+        <Label text="Travelode: {{travelodeDetailsUI.travelodeTitle}}" class="travelode-details-title"></Label>
+
+        <StackLayout *ngFor="let trDay of travelodeDetailsUI.travelodeDays">
+            <Label text="{{trDay.date}}" class="travelode-details-date"></Label>
+
+            <StackLayout *ngFor="let trMUnit of trDay.travelodeMediaUnits" class="travelode-details-medias">
+
+                <FlexboxLayout flexWrap="nowrap" flexDirection="row" class="travelode-details-media">
+
+                    <FlexboxLayout flexWrap="wrap" flexDirection="column" justifyContent="flex-start" width="60%">
+                        <Label text="{{trMUnit.time}}" class="travelode-details-media-time" verticalAlignment="top"></Label>
+                        <Label text="{{trMUnit.mediaTitle}}" class="travelode-details-media-title" verticalAlignment="top" textWrap="true"></Label>
+                        <Label text="{{trMUnit.mediaCaption}}" class="travelode-details-media-caption" verticalAlignment="bottom" textWrap="true"></Label>
+                    </FlexboxLayout>
+
+                    <FlexboxLayout width="40%">
+                        <image src="{{trMUnit.mediaUrl}}" class="travelode-details-media-image"></image>
+                    </FlexboxLayout>
+
+                </FlexboxLayout>
+
+            </StackLayout>
+
+        </StackLayout>
+
+    </StackLayout>
+
+    <StackLayout *ngIf="emptyTravelode">
+        <Label text="You havent posted anything for this travelode yet." class="travelode-details-blank" textWrap="true"></Label>
+        <Button text="Start posting!" class="btn btn-secondary travelode-details-start-button" (tap)="startPosting()"></Button>
+    </StackLayout>
+
+
+</StackLayout>

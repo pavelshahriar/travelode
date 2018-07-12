@@ -25,11 +25,11 @@ export class PostStartComponent implements OnInit {
 
     ngOnInit() {
         this.canGoBack = this.nav.canGoBack();
-        this.travelodeId = appSettings.getNumber('travelodeId');
-        this.travelodeTitle = appSettings.getString('travelodeTitle');
-
-        if (typeof this.travelodeId == "undefined"){
+        if (!appSettings.getNumber('travelodeId')){
             this.router.navigate(['/travelode/list'])
+        } else {
+            this.travelodeId = appSettings.getNumber('travelodeId');
+            this.travelodeTitle = appSettings.getString('travelodeTitle');
         }
     }
 
@@ -65,7 +65,7 @@ export class PostStartComponent implements OnInit {
 
     switchTravelode() {
         console.log('Switch travelode tapped !');
-        this.router.navigate(['/travelode/list']);
+        this.router.navigate(['/travelode/switch']);
     }
 
     cameraSelected() {

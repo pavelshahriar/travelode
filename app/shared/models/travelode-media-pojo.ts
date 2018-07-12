@@ -26,4 +26,21 @@ export class TravelodeMediaPojo {
         this.displayLocationId = trm.displayLocationId;
         this.isCover = trm.isCover;
     }
+
+    deconstruct(trmp: TravelodeMediaPojo) : TravelodeMedia {
+        let returnTravelodMedia = new TravelodeMedia();
+        returnTravelodMedia.id = trmp.id;
+        returnTravelodMedia.travelodeId = trmp.travelode.id;
+        returnTravelodMedia.mediaId = trmp.media.id;
+        returnTravelodMedia.rollNo = trmp.rollNo;
+        returnTravelodMedia.privacy = trmp.privacy;
+        returnTravelodMedia.title = trmp.title;
+        returnTravelodMedia.displayDate = trmp.displayDate;
+        returnTravelodMedia.isCover = trmp.isCover;
+
+        returnTravelodMedia.caption = (trmp.caption) ? trmp.caption : '';
+        returnTravelodMedia.displayLocationId = (trmp.displayLocationId) ? trmp.displayLocationId : 0;
+
+        return returnTravelodMedia;
+    }
 }

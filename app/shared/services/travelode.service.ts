@@ -4,6 +4,7 @@ import * as util from "util";
 
 import * as Config from "../../config/config.json";
 import {Travelode} from "../models/travelode";
+import {Observable} from "rxjs/Rx";
 
 @Injectable()
 export class TravelodeService {
@@ -39,14 +40,14 @@ export class TravelodeService {
         return this.http.get(url, {headers: headers});
     }
 
-    getOneByTravelodeId(id: number) {
+    getOneByTravelodeId(id: number) : Observable<Travelode> {
         // console.log(id);
         // console.log(util.inspect(Config, false, null));
 
         const url = Config.apiUrl + "travelode/" + id;
         const headers = this.createRequestHeader();
 
-        return this.http.get(url, {headers: headers});
+        return this.http.get(url, {headers: headers}).map((data: Travelode) => data[0]);
     }
 
     createRequestHeader() {

@@ -8,11 +8,8 @@ import { TNSCheckBoxModule } from 'nativescript-checkbox/angular';
 import { AppComponent } from "./app.component";
 import { navigatableComponents, routes } from "./app.routing";
 
-import { UserService } from "./shared/services/user.service";
-import { TravelodeService } from "./shared/services/travelode.service";
-import { TravelodeMediaService } from "./shared/services/travelode-media.service";
-import { MediaService } from "./shared/services/media.service";
-import { LoadingIndicatorHelper } from "./shared/helpers/loading-indicator-helper";
+import { HelpersModule } from "./shared/helpers/helpers.module";
+import { ServicesModule } from "./shared/services/services.module";
 
 @NgModule({
   imports: [
@@ -21,7 +18,9 @@ import { LoadingIndicatorHelper } from "./shared/helpers/loading-indicator-helpe
       NativeScriptHttpClientModule,
       NativeScriptRouterModule,
       NativeScriptRouterModule.forRoot(routes),
-      TNSCheckBoxModule
+      TNSCheckBoxModule,
+      HelpersModule,
+      ServicesModule
   ],
   declarations: [
       AppComponent,
@@ -30,12 +29,7 @@ import { LoadingIndicatorHelper } from "./shared/helpers/loading-indicator-helpe
   bootstrap: [
       AppComponent
   ],
-  providers: [
-      UserService,
-      TravelodeService,
-      MediaService,
-      TravelodeMediaService
-  ],
+  providers: [],
   schemas: [NO_ERRORS_SCHEMA],
 })
 export class AppModule {}

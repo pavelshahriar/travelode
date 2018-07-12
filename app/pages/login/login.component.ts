@@ -31,12 +31,16 @@ export class LoginComponent implements OnInit{
         public page: Page
     ) {
         this.login_credential = new LoginCredential();
-            page.actionBarHidden = true;
+        page.actionBarHidden = true;
     }
 
     ngOnInit() {
         if(appSettings.getNumber('userId')){
-            this.router.navigate(['/post/start']);
+            if(appSettings.getNumber('travelodeId')) {
+                this.router.navigate(['/post/start']);
+            } else {
+                this.router.navigate(['/travelode/list'])
+            }
         }
     }
 

@@ -9,14 +9,17 @@ import { PostEntryCameraComponent }  from "./pages/post/entry/post-entry-camera.
 import { PostSuccessComponent }      from "./pages/post/success/post-success.component";
 import { PostStartComponent }        from "./pages/post/start/post-start.component";
 import {PostReviewComponent}         from "./pages/post/review/post-review.component";
+import {TravelodeDetailsComponent}   from "./pages/travelode/details/travelode-details.component";
+import {TravelodeSwitchComponent} from "~/pages/travelode/switch/travelode-switch.component";
 
 export const routes = [
     {path: "",                      component: LoginComponent},
-    // {path: "",                      component: PostReviewComponent},
     {path: "login",                 component: LoginComponent},
     {path: "signup",                component: SignupComponent},
     {path: "travelode/welcome",     component: TravelodeWelcomeComponent},
     {path: "travelode/list",        component: TravelodeListComponent},
+    {path: "travelode/switch",      component: TravelodeSwitchComponent},
+    {path: "travelode/details/:id", component: TravelodeDetailsComponent},
     {path: "travelode/create",      component: TravelodeCreateComponent},
     {path: "travelode/edit/:id",    component: TravelodeCreateComponent},
     {path: "travelode/created/:id", component: TravelodeCreatedComponent},
@@ -35,6 +38,8 @@ export const navigatableComponents = [
     TravelodeWelcomeComponent,
     TravelodeCreateComponent,
     TravelodeListComponent,
+    TravelodeDetailsComponent,
+    TravelodeSwitchComponent,
     TravelodeCreatedComponent,
     PostStartComponent,
     PostEntryCameraComponent,
