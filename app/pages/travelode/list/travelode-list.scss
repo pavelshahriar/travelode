@@ -10,6 +10,7 @@
 
   &-items {
     font-size: 15;
+    padding: 30;
   }
 
   &-year {
@@ -39,5 +40,17 @@
       color: $tertiary-color;
       text-decoration: underline;
     }
+  }
+
+  &-blank {
+    padding: 20;
+    font-size: 15;
+    margin-top: 20;
+    text-align: center;
+  }
+
+  &-create-button {
+    margin-top: 60;
+    padding: 20;
   }
 }

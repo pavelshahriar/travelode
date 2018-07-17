@@ -1,8 +1,4 @@
-<ActionBar class="action-bar">
-    <Label text="travelode" class="font-weight-bold primary"></Label>
-    <NavigationButton *ngIf="canGoBack" text="Back" android.systemIcon="ic_menu_back" (tap)="goBack()"></NavigationButton>
-</ActionBar>
-
+<appMainActionBar [showSlider]="true"></appMainActionBar>
 <StackLayout orientation="vertical" class="container-loose">
     <Label text="Start posting" class="post-start-heading tertiary text-center"></Label>
     <Label text="&quot;Lets create some beautiful travel stories&quot;" class="post-start-tag tertiary text-center" textWrap="true"></Label>

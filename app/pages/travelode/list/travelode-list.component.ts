@@ -10,7 +10,6 @@ import { TravelodeListUi } from "~/shared/interfaces/travelode-list-ui";
 import { TravelodeListUiHelper } from "~/shared/helpers/travelode-list-ui-helper";
 import { LoadingIndicatorHelper } from "~/shared/helpers/loading-indicator-helper";
 
-
 @Component({
     selector: "my-app-travelode-list",
     moduleId: module.id,
@@ -21,7 +20,6 @@ import { LoadingIndicatorHelper } from "~/shared/helpers/loading-indicator-helpe
     ]
 })
 export class TravelodeListComponent implements OnInit{
-    private _canGoBack: boolean;
     private _travelodeList: TravelodeListUi;
 
     constructor(
@@ -29,25 +27,15 @@ export class TravelodeListComponent implements OnInit{
         private nav: RouterExtensions,
         private travelodeService: TravelodeService,
         private travelodeListUiHelper: TravelodeListUiHelper) {
-        this.canGoBack = false;
         this._travelodeList = {travelodesByYear: []};
     }
 
     ngOnInit() {
-        this.canGoBack = this.nav.canGoBack();
         if (!appSettings.getNumber('userId')){
             this.router.navigate(['/login'])
         }
 
         this.getTravelodesList();
-    }
-
-    get canGoBack(): boolean {
-        return this._canGoBack;
-    }
-
-    set canGoBack(value: boolean) {
-        this._canGoBack = value;
     }
 
     get travelodeList(): TravelodeListUi {
@@ -78,11 +66,5 @@ export class TravelodeListComponent implements OnInit{
 
     createNewTapped() {
         this.router.navigate(["/travelode/create/"]);
-    }
-
-    goBack() {
-        console.log('Nav button tapped !');
-        // topmost().goBack();
-        this.nav.back();
     }
 }

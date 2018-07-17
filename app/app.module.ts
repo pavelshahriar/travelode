@@ -3,6 +3,7 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
+import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
 import { TNSCheckBoxModule } from 'nativescript-checkbox/angular';
 
 import { AppComponent } from "./app.component";
@@ -20,7 +21,8 @@ import { ServicesModule } from "./shared/services/services.module";
       NativeScriptRouterModule.forRoot(routes),
       TNSCheckBoxModule,
       HelpersModule,
-      ServicesModule
+      ServicesModule,
+      NativeScriptUISideDrawerModule
   ],
   declarations: [
       AppComponent,

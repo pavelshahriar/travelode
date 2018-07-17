@@ -1,16 +1,6 @@
-<ActionBar class="action-bar">
-    <Label text="travelode" class="font-weight-bold primary"></Label>
-    <NavigationButton *ngIf="canGoBack" text="Back" android.systemIcon="ic_menu_back" (tap)="goBack()"></NavigationButton>
-    <ActionItem
-            (tap)="createNewTapped()"
-            android.position="right"
-            class="action-bar-item action-bar-item-menu-icon"
-            ios.position="right"
-    ></ActionItem>
-</ActionBar>
-
-<StackLayout orientation="vertical" class="container-tight">
-    <Label text="Browse travelodes" class="travelode-list-heading tertiary text-center"></Label>
+<appMainActionBar [showSlider]="true"></appMainActionBar>
+<StackLayout orientation="vertical" class="container-loose">
+    <Label text="Browse travelodes" class="travelode-list-heading tertiary"></Label>
 
     <StackLayout *ngIf="travelodeList" class="travelode-list-items">
         <StackLayout *ngFor="let trY of travelodeList.travelodesByYear">
@@ -32,5 +22,11 @@
             </StackLayout>
         </StackLayout>
     </StackLayout>
+
+    <StackLayout *ngIf="!travelodeList">
+        <Label textWrap="true" text="You haven't created any travelode yet." class="travelode-list-blank"></Label>
+    </StackLayout>
+
+    <Button text="Create new!" class="btn btn-secondary travelode-list-create-button" (tap)="createNewTapped()"></Button>
 
 </StackLayout>

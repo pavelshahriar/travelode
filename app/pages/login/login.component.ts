@@ -1,16 +1,16 @@
-import {Component, OnInit} from "@angular/core";
+import { Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {Page} from "tns-core-modules/ui/page";
 import * as util from "util";
 import * as appSettings from "application-settings";
 import * as Dialogs from "tns-core-modules/ui/dialogs"
 
-import {LoadingIndicatorHelper} from "../../shared/helpers/loading-indicator-helper";
-import {LoginCredential} from "../../shared/models/login-credential";
-import {UserService} from "../../shared/services/user.service";
-import {TravelodeService} from "../../shared/services/travelode.service";
-import {Travelode} from "../../shared/models/travelode";
-import {User} from "../../shared/models/user";
+import {LoadingIndicatorHelper} from "~/shared/helpers/loading-indicator-helper";
+import {LoginCredential} from "~/shared/models/login-credential";
+import {UserService} from "~/shared/services/user.service";
+import {TravelodeService} from "~/shared/services/travelode.service";
+import {Travelode} from "~/shared/models/travelode";
+import {User} from "~/shared/models/user";
 
 @Component({
     selector: "my-app-login",
@@ -28,10 +28,10 @@ export class LoginComponent implements OnInit{
         private router: Router,
         private userService: UserService,
         private travelodeService: TravelodeService,
-        public page: Page
+        private page: Page
     ) {
         this.login_credential = new LoginCredential();
-        page.actionBarHidden = true;
+        this.page.actionBarHidden = true;
     }
 
     ngOnInit() {

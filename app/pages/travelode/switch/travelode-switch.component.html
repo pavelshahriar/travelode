@@ -1,13 +1,14 @@
-<ActionBar class="action-bar">
-    <Label text="travelode" class="font-weight-bold primary"></Label>
-    <NavigationButton *ngIf="!switching && canGoBack" text="Back" android.systemIcon="ic_menu_back" (tap)="goBack()"></NavigationButton>
-</ActionBar>
+<appMainActionBar
+        *ngIf="!isSetting"
+        [showBack]="canGoBack"
+        [backNavigationDefault]="true"
+></appMainActionBar>
 
 <StackLayout orientation="vertical" class="container-tight">
-    <Label text="Switch travelodes" class="travelode-switch-heading tertiary text-center"></Label>
+    <Label text="{{(isSetting) ? 'Set' : 'Switch'}} travelodes" class="travelode-switch-heading tertiary text-center" [class.travelode-switch-settop-pad]="isSetting"></Label>
 
     <StackLayout *ngIf="travelodeList" class="travelode-switch-items">
-        <Label text="Click on the travelode you want to switch to:" class="travelode-switch-instruction" textWrap="true"></Label>
+        <Label text="Click on the travelode you want to {{(isSetting) ? 'set as default' : 'switch to'}}:" class="travelode-switch-instruction" textWrap="true"></Label>
 
         <StackLayout *ngFor="let trY of travelodeList.travelodesByYear">
             <Label text="{{trY.year}}" class="travelode-switch-year"></Label>

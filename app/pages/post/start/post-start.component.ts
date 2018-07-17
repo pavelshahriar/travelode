@@ -25,11 +25,12 @@ export class PostStartComponent implements OnInit {
 
     ngOnInit() {
         this.canGoBack = this.nav.canGoBack();
+        this.travelodeId = appSettings.getNumber('travelodeId');
+        this.travelodeTitle = appSettings.getString('travelodeTitle');
+
         if (!appSettings.getNumber('travelodeId')){
-            this.router.navigate(['/travelode/list'])
-        } else {
-            this.travelodeId = appSettings.getNumber('travelodeId');
-            this.travelodeTitle = appSettings.getString('travelodeTitle');
+            alert('We gotta select a travelode first to start posting. Lets do that first?');
+            this.router.navigate(['/travelode/switch'], { queryParams: { set: true } })
         }
     }
 

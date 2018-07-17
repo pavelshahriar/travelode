@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import { RouterExtensions } from "nativescript-angular";
 import * as appSettings from "application-settings";
 import * as util from "util";
@@ -9,6 +9,7 @@ import { TravelodeService } from "~/shared/services/travelode.service";
 import { TravelodeListUi } from "~/shared/interfaces/travelode-list-ui";
 import { TravelodeListUiHelper } from "~/shared/helpers/travelode-list-ui-helper";
 import { LoadingIndicatorHelper } from "~/shared/helpers/loading-indicator-helper";
+import {Page} from "tns-core-modules/ui/page";
 
 
 @Component({
@@ -23,14 +24,16 @@ import { LoadingIndicatorHelper } from "~/shared/helpers/loading-indicator-helpe
 export class TravelodeSwitchComponent implements OnInit{
     private _canGoBack: boolean;
     private _travelodeList: TravelodeListUi;
+    private _isSetting: boolean = false;
 
     constructor(
         private router: Router,
-        private travelodeService: TravelodeService,
+        private route: ActivatedRoute,
         private nav: RouterExtensions,
+        private page: Page,
+        private travelodeService: TravelodeService,
         private travelodeListUiHelper: TravelodeListUiHelper
     ) {
-        this.canGoBack = false;
         this._travelodeList = {travelodesByYear: []};
     }
 
@@ -40,7 +43,21 @@ export class TravelodeSwitchComponent implements OnInit{
             this.router.navigate(['/login'])
         }
 
-        this.getTravelodesList();
+        this.route.queryParams.subscribe(params => {
+            if (params['set'] && (params['set']=='true')) {
+                this.isSetting = true;
+                this.page.actionBarHidden = true;
+            }
+            this.getTravelodesList();
+        })
+    }
+
+    get isSetting(): boolean {
+        return this._isSetting;
+    }
+
+    set isSetting(value: boolean) {
+        this._isSetting = value;
     }
 
     get canGoBack(): boolean {
@@ -85,11 +102,5 @@ export class TravelodeSwitchComponent implements OnInit{
 
     createNewTapped() {
         this.router.navigate(["/travelode/create/"]);
-    }
-
-    goBack() {
-        console.log('Nav button tapped !');
-        // topmost().goBack();
-        this.nav.back();
     }
 }

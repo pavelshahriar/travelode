@@ -5,9 +5,9 @@
 
 <StackLayout orientation="vertical" class="container-tight">
     <Label text="Browse travelodes" class="travelode-details-heading tertiary text-center"></Label>
+    <Label text="{{travelodeDetailsUI.travelodeTitle}}" class="travelode-details-title"></Label>
 
     <StackLayout *ngIf="(!emptyTravelode)">
-        <Label text="Travelode: {{travelodeDetailsUI.travelodeTitle}}" class="travelode-details-title"></Label>
 
         <StackLayout *ngFor="let trDay of travelodeDetailsUI.travelodeDays">
             <Label text="{{trDay.date}}" class="travelode-details-date"></Label>
@@ -31,6 +31,8 @@
             </StackLayout>
 
         </StackLayout>
+
+        <Button text="Post more!" class="btn btn-secondary travelode-details-start-button" (tap)="startPosting()"></Button>
 
     </StackLayout>
 
