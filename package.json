@@ -54,7 +54,7 @@
     "reflect-metadata": "~0.1.12",
     "rxjs": "~6.2.2",
     "rxjs-compat": "^6.2.2",
-    "tns-core-modules": "~4.1.0",
+    "tns-core-modules": "^4.1.0",
     "util": "^0.11.0",
     "zone.js": "~0.8.26"
   },
@@ -69,7 +69,6 @@
     "nativescript-dev-sass": "^1.6.0",
     "nativescript-dev-typescript": "~0.7.2",
     "node-sass": "^4.9.2",
-    "sass": "^1.9.2",
     "tslint": "~5.10.0",
     "typescript": "~2.7.2"
   }

@@ -9,10 +9,10 @@
 
     <StackLayout *ngIf="(!emptyTravelode)">
 
-        <StackLayout *ngFor="let trDay of travelodeDetailsUI.travelodeDays">
+        <StackLayout *ngFor="let trDay of travelodeDetailsUI.travelodeDays; index as i">
             <Label text="{{trDay.date}}" class="travelode-details-date"></Label>
 
-            <StackLayout *ngFor="let trMUnit of trDay.travelodeMediaUnits" class="travelode-details-medias">
+            <StackLayout *ngFor="let trMUnit of trDay.travelodeMediaUnits; index as j" class="travelode-details-medias">
 
                 <FlexboxLayout flexWrap="nowrap" flexDirection="row" class="travelode-details-media">
 

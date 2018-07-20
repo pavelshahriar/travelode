@@ -1,24 +1,27 @@
 import {Component, OnInit} from '@angular/core';
-import {RadSideDrawer} from "nativescript-ui-sidedrawer";
-import * as app from "tns-core-modules/application";
-import {User} from "~/shared/models/user";
-import {UserService} from "~/shared/services/user.service";
-import {filter} from "rxjs/internal/operators";
 import {NavigationEnd, Router} from "@angular/router";
+import {RouterExtensions} from "nativescript-angular";
+import {RadSideDrawer} from "nativescript-ui-sidedrawer";
+import {filter} from "rxjs/internal/operators";
+import * as app from "tns-core-modules/application";
 import * as appSettings from "tns-core-modules/application-settings";
 import * as util from "util";
-import {RouterExtensions} from "nativescript-angular";
+
+import {UserService} from "~/shared/services/user.service";
+import {LoadingIndicatorHelper} from "~/shared/helpers/loading-indicator-helper";
+import {UserPojo} from "~/shared/models/user-pojo";
+import {User} from "~/shared/models/user";
 
 @Component({
-    moduleId: module.id,
     selector: 'appSliderMenu',
+    moduleId: module.id,
     templateUrl: 'slider-menu.component.html',
     styleUrls: [
         'slider-menu.scss'
     ]
 })
 export class SliderMenuComponent implements OnInit {
-    private _currentUser: User;
+    private _currentUser: UserPojo;
     private _activatedUrl: string;
 
     constructor(
@@ -28,28 +31,21 @@ export class SliderMenuComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.activatedUrl = "/";
-
-        if (appSettings.getNumber('userId')) {
-            this._setUserData(appSettings.getNumber('userId'));
-        }
+        this.activatedUrl = "";
+        this.setUserData();
 
         this.router.events
             .pipe(filter((event: any) => event instanceof NavigationEnd))
             .subscribe((event: NavigationEnd) => {
                 this.activatedUrl = event.urlAfterRedirects;
-                if (appSettings.getNumber('userId')) {
-                    this._setUserData(appSettings.getNumber('userId'));
-                }
-
             });
     }
 
-    get currentUser(): User {
+    get currentUser(): UserPojo {
         return this._currentUser;
     }
 
-    set currentUser(value: User) {
+    set currentUser(value: UserPojo) {
         this._currentUser = value;
     }
 
@@ -57,14 +53,15 @@ export class SliderMenuComponent implements OnInit {
         this._activatedUrl = value;
     }
 
-    _setUserData(currentUserId) {
-        this.userService.getById(currentUserId).subscribe((data) => {
-            console.log(util.inspect(data, null, false));
-            this.currentUser = new User();
-            this.currentUser = data;
-            console.log('curent user');
-            console.log(util.inspect(this.currentUser, null, false));
-        });
+    setUserData() {
+        const currentUserId = appSettings.getNumber('userId');
+        if(currentUserId) {
+            LoadingIndicatorHelper.showLoader();
+            this.userService.getOneById(currentUserId).subscribe((data: UserPojo) => {
+                LoadingIndicatorHelper.hideLoader();
+                this.currentUser = data;
+            });
+        }
     }
 
     isComponentSelected(url: string): boolean {
@@ -81,9 +78,4 @@ export class SliderMenuComponent implements OnInit {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.closeDrawer();
     }
-
-    // onDrawerButtonTap(): void {
-    //     const sideDrawer = <RadSideDrawer>app.getRootView();
-    //     sideDrawer.showDrawer();
-    // }
 }

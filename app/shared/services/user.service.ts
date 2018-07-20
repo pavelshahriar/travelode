@@ -1,50 +1,59 @@
 import { Injectable } from "@angular/core";
-import {HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs/Rx";
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/concatMap";
+import * as util from "util";
 
 import * as Config from "../../config/config.json";
 import {LoginCredential} from "../models/login-credential";
-import * as util from "util";
-import {Observable} from "rxjs/Rx";
 import {User} from "~/shared/models/user";
+import {RequestHelper} from "~/shared/helpers/request-helper";
+import {Media} from "~/shared/models/media";
+import {UserPojo} from "~/shared/models/user-pojo";
 
 @Injectable()
 export class UserService {
     constructor(private http: HttpClient) {}
 
     login(lc: LoginCredential) {
-        // console.log(util.inspect(lc, false, null));
-        // console.log(util.inspect(Config, false, null));
-
         const url = Config.apiUrl + "user/login";
         const body = JSON.stringify(lc);
-        const headers = this.createRequestHeader();
+        const headers = RequestHelper.getRequestHeader();
+        RequestHelper.logRequest(url, 'POST', body);
 
         return this.http.post(url, body, {headers: headers});
     }
 
     singup(lc: LoginCredential) {
-        // console.log(util.inspect(lc, false, null));
-        // console.log(util.inspect(Config, false, null));
-
         const url = Config.apiUrl + "user";
         const body = JSON.stringify(lc);
-        const headers = this.createRequestHeader();
+        const headers = RequestHelper.getRequestHeader();
+        RequestHelper.logRequest(url, 'POST', body);
 
         return this.http.post(url, body, {headers: headers, observe: "response"});
     }
 
-    getById(id: number) : Observable<User>{
+    getOneById(id: number): Observable<UserPojo> {
         const url = Config.apiUrl + "user/" + id;
-        const headers = this.createRequestHeader();
+        const headers = RequestHelper.getRequestHeader();
+        RequestHelper.logRequest(url, 'GET');
 
-        return this.http.get(url, {headers: headers}).map(res => res[0]);
+        return this.http.get(url, {headers: headers})
+            .map((res: Array<User>) => res[0])
+            .concatMap((user: User) => this.getUserPojo(user));
     }
 
-    createRequestHeader() {
-        const headers = new HttpHeaders({
-            "Content-Type": "application/json"
-        });
+    private getUserPojo(u: User): Observable<UserPojo> {
+        if (!u.photo) {
+            return Observable.of(new UserPojo(u));
+        }
+        const mediaUrl = Config.apiUrl + 'media/' + u.photo;
+        const headers = RequestHelper.getRequestHeader();
+        RequestHelper.logRequest(mediaUrl, 'GET');
 
-        return headers;
+        return this.http.get(mediaUrl, {headers: headers})
+            .map((res: Array<Media>) => res[0])
+            .map((m: Media) => new UserPojo(u, m));
     }
 }

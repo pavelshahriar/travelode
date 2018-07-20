@@ -104,7 +104,7 @@ export class TravelodeCreateComponent implements OnInit {
                     .subscribe((data) => {
                         // console.log(util.inspect(data, false, null));
                         LoadingIndicatorHelper.hideLoader();
-                        if(data.status === 200) {
+                        if(data.status === 201) {
                             alert ('Travelode Created');
                             this.router.navigate(["/travelode/created/"]);
                         } else {

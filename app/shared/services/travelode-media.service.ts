@@ -5,41 +5,45 @@ import "rxjs/add/operator/map";
 import "rxjs/add/operator/concatMap";
 import * as util from "util";
 
-import * as Config from "../../config/config.json";
-import {TravelodeMedia} from "../models/travelode-media";
-import {Media} from "../../shared/models/media";
-import {Travelode} from "../../shared/models/travelode";
-import {TravelodeMediaPojo} from "../../shared/models/travelode-media-pojo";
+import * as Config from "~/config/config.json";
+import {TravelodeMedia} from "~/shared/models/travelode-media";
+import {Media} from "~/shared/models/media";
+import {Travelode} from "~/shared/models/travelode";
+import {TravelodeMediaPojo} from "~/shared/models/travelode-media-pojo";
+import {RequestHelper} from "~/shared/helpers/request-helper";
 
 @Injectable()
 export class TravelodeMediaService {
     constructor(private http: HttpClient) {}
 
     getAllMediaByTravelodeId(id: number) : Observable<Array<TravelodeMediaPojo>> {
-        // console.log(id);
-        const headers = this.createRequestHeader();
-        return this.http.get(Config.apiUrl + "travelode/media?travelodeId="+ id, {headers: headers})
+        const url = Config.apiUrl + "travelode/media?travelodeId="+ id;
+        const headers = RequestHelper.getRequestHeader();
+        RequestHelper.logRequest(url, 'GET');
+
+        return this.http.get(url, {headers: headers})
             .concatMap((tms: Array<TravelodeMedia>) => Observable.from(tms))
             .concatMap((tm: TravelodeMedia) => this.getTravelodeMediaPojo(tm))
             .toArray()
     }
 
     create(trm: TravelodeMedia) {
-        // console.log(id);
-        // console.log(util.inspect(Config, false, null));
-
         const url = Config.apiUrl + "travelode/media";
         const body = JSON.stringify(trm);
-        const headers = this.createRequestHeader();
+        const headers = RequestHelper.getRequestHeader();
+        RequestHelper.logRequest(url, 'POST', body);
 
         return this.http.post(url, body, {headers: headers, observe: "response"});
     }
 
     getOneById(id: number) : Observable<TravelodeMediaPojo> {
-        const headers = this.createRequestHeader();
-        return this.http.get(Config.apiUrl + "travelode/media/"+ id, {headers: headers})
+        const url = Config.apiUrl + "travelode/media/"+ id;
+        const headers = RequestHelper.getRequestHeader();
+        RequestHelper.logRequest(url, 'GET');
+
+        return this.http.get(url, {headers: headers})
             .map((res: Array<TravelodeMedia>) => {
-                console.log(res[0]);
+                // console.log(res[0]);
                 return res[0];
             })
             .concatMap((trm: TravelodeMedia) => {
@@ -48,26 +52,20 @@ export class TravelodeMediaService {
     }
 
     private getTravelodeMediaPojo(tm: TravelodeMedia) {
-        let headers = this.createRequestHeader();
-        let travelodeId = tm.travelodeId;
-        let mediaId = tm.mediaId;
+        const travelodeUrl = Config.apiUrl + 'travelode/' + tm.travelodeId;
+        const mediaUrl = Config.apiUrl + 'media/' + tm.mediaId;
+        const headers = RequestHelper.getRequestHeader();
+        RequestHelper.logRequest(travelodeUrl, 'GET');
+        RequestHelper.logRequest(mediaUrl, 'GET');
 
         return Observable.forkJoin([
-            this.http.get(Config.apiUrl + 'travelode/' + travelodeId, {headers: headers}).map((res: Array<Travelode>) => res[0]),
-            this.http.get(Config.apiUrl + 'media/' + mediaId, {headers: headers}).map((res: Array<Media>) => res[0])
+            this.http.get(travelodeUrl, {headers: headers}).map((res: Array<Travelode>) => res[0]),
+            this.http.get(mediaUrl, {headers: headers}).map((res: Array<Media>) => res[0])
         ])
             .map((data: any) => {
                 let t: Travelode = data[0];
                 let m: Media = data[1];
                 return new TravelodeMediaPojo(tm, t, m);
             });
-    }
-
-    createRequestHeader() {
-        const headers = new HttpHeaders({
-            "Content-Type": "application/json"
-        });
-
-        return headers;
     }
 }

@@ -20,6 +20,7 @@ import { LoadingIndicatorHelper } from "~/shared/helpers/loading-indicator-helpe
     ]
 })
 export class TravelodeListComponent implements OnInit{
+
     private _travelodeList: TravelodeListUi;
 
     constructor(
@@ -51,8 +52,8 @@ export class TravelodeListComponent implements OnInit{
         this.travelodeService.getAllByUserId(appSettings.getNumber('userId'))
             .subscribe(
                 (data: Array<Travelode>) => {
+                    // console.log(util.inspect(data, false, null))
                     this.travelodeList = this.travelodeListUiHelper.getTravelodeListUi(data);
-                    // console.log(util.inspect(this.travelodeList, false, null));
                     LoadingIndicatorHelper.hideLoader();
                 }
             );

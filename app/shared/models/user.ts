@@ -2,7 +2,7 @@ export class User {
     id: number;
     email: string;
     fullname ?: string;
-    photo ?: string;
+    photo ?: number;
     created: string;
     updated: string;
 

@@ -70,7 +70,6 @@ export class LoginComponent implements OnInit{
                             appSettings.setNumber('userId', data[0].id);
                             appSettings.setString('email', data[0].email);
                             this._enterTravelodePanel();
-                            // this.router.navigate(["/travelode/welcome"]);
                         }
                     },
                     (error) => {

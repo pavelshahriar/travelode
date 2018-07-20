@@ -62,11 +62,6 @@
   }
 }
 
-//Action bar
-//ActionBar .action-bar-title {
-//  horizontal-align: center;
-//}
-
 // Drawer navigation custom styles
 .sidedrawer {
   &.sidedrawer-left {
@@ -91,8 +86,13 @@
     background-color: $ab-background;
 
     .sidedrawer-header-brand {
-      color: $ab-color;
+      color: $black; //$ab-color;
     }
+
+    .sidedrawer-header-brand-name {
+      font-weight: 700;
+    }
+
   }
 
   .sidedrawer-content {

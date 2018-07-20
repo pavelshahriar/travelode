@@ -58,7 +58,7 @@ export class TravelodeDetailsComponent implements OnInit{
                                         if (travelodeUi.length > 0) {
                                             this.emptyTravelode = false;
                                             this.travelodeDetailsUI = this.travelodeDetailsUiHelper.getTravelodeDetailsUi(travelode, travelodeUi);
-                                            console.log(util.inspect(this.travelodeDetailsUI, false, null));
+                                            // console.log(util.inspect(this.travelodeDetailsUI, false, null));
                                         }
                                     });
                             }
@@ -93,14 +93,14 @@ export class TravelodeDetailsComponent implements OnInit{
     }
 
     goBack() {
-        console.log('Nav button tapped !');
+        console.log('Nav button tapped!');
         // topmost().goBack();
         this.nav.back();
     }
 
     startPosting() {
-        console.log('Post tapped');
-        console.log(util.inspect(this.travelodeDetailsUI, null, false));
+        console.log('Start post tapped!');
+        // console.log(util.inspect(this.travelodeDetailsUI, null, false));
         appSettings.setNumber('travelodeId', this.travelodeDetailsUI.travelodeId);
         appSettings.setString('travelodeTitle', this.travelodeDetailsUI.travelodeTitle);
 

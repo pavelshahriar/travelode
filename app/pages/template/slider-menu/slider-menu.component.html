@@ -1,7 +1,12 @@
-<StackLayout row="0" class="sidedrawer-header" *ngIf="currentUser">
-    <Label class="sidedrawer-header-image fa" text="&#xf2bd;"></Label>
-    <Label class="sidedrawer-header-brand" text="{{currentUser.fullname}}"></Label>
-    <Label class="footnote" text="{{currentUser.email}}"></Label>
+<!--<StackLayout class="sidedrawer-header" *ngIf="currentUser">-->
+    <!--<Label class="sidedrawer-header-image fa" text="&#xf2bd;" *ngIf="!(currentUser.photo)"></Label>-->
+    <!--<image class="sidedrawer-header-image" src="{{currentUser.photo.url}}" *ngIf="currentUser.photo"></image>-->
+    <!--<Label class="sidedrawer-header-brand sidedrawer-header-brand-name" text="{{currentUser.fullname}}"></Label>-->
+    <!--<Label class="sidedrawer-header-brand" text="{{currentUser.email}}"></Label>-->
+<!--</StackLayout>-->
+
+<StackLayout class="sidedrawer-header" backgroundColor="white">
+    <Image src="~/images/logo-fat-transparent.png" class="login-logo"></Image>
 </StackLayout>
 
 <ScrollView row="1">
