@@ -20,31 +20,46 @@ If step 4 above says something is wrong, manually install everything following t
 
 ## App Setup
 
-1. git clone this repo : 
+1. Git clone this repo : 
    ```
    git clone git@github.com:pavelshahriar/travelode.git
    ```
-2. go to the project repo : `cd travelode`
-3. run : `npm install`
-4. add mobile platforms one by one :
+2. Go to the project repo : `cd travelode`
+3. Run : `npm install`
+4. Add mobile platforms one by one :
    ```
    tns platform add ios
    tns platform add android
    ```
-5. do these to setup local machine `apiUrl` :
+5. Do these to setup local machine `apiUrl` :
    ```
    go    : System Preference -> Network -> Connected Network -> Advanced -> TCP/IP
    copy  : IPv4 Address (Ideally 10.0.0.xxx)
    paste : config/config.local.json -> apiUrl
    ```
-6. (for local) run the local `travelode-api` project
-7. (for local) run the following in separate terminals :
+6. Build the project :
+
+   i. Local : 
+   ```
+   npm run android-local-build
+   npm run io-local-build
+   ```
+   ii. Prod :
+   ```
+   npm run android-prod-build
+   npm run io-prod-build
+   ```
+    
+7. Run the app in connected device / emulator :
+   
+   i. Local :
    ```
    npm run android-local
    npm run ios-local
    ```
-8. (for prod development)run the following in separate terminals :
+   ii.Prod :
    ```
    npm run android-prod
    npm run ios-prod
+
    ```
