@@ -8,7 +8,7 @@ import { RouterExtensions } from "nativescript-angular";
 import * as screenOrientation from "nativescript-screen-orientation";
 
 @Component({
-    selector: "my-app-post-entry",
+    selector: "my-app-post-entry-camera",
     moduleId: module.id,
     templateUrl: "./post-entry-camera.component.html",
 })
@@ -45,12 +45,12 @@ export class PostEntryCameraComponent implements OnInit {
                     const saved = imageSource.saveToFile(path, "jpg");
                     if (saved) {
                         console.log("Image saved successfully with filename : " + fileName + " @ here : " + folder);
-                        screenOrientation.orientationCleanup();
                         this.router.navigate(['post/details/local'], {queryParams: {path: path}});
                     }
                 });
             })
-            .catch(() => {
+            .catch((e) => {
+                console.log(e);
                 screenOrientation.orientationCleanup();
                 topmost().goBack();
             });

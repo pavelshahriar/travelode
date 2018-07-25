@@ -3,38 +3,39 @@
     <NavigationButton *ngIf="canGoBack" text="Back" android.systemIcon="ic_menu_back" (tap)="goBack()"></NavigationButton>
 </ActionBar>
 
-<StackLayout orientation="vertical" class="container-tight">
+<StackLayout orientation="vertical" class="p-t-20 p-b-20">
     <Label text="Browse travelodes" class="travelode-details-heading tertiary text-center"></Label>
     <Label text="{{travelodeDetailsUI.travelodeTitle}}" class="travelode-details-title"></Label>
 
-    <StackLayout *ngIf="(!emptyTravelode)">
+    <ScrollView orientation="vertical">
+        <StackLayout *ngIf="(!emptyTravelode)" class="p-30">
 
-        <StackLayout *ngFor="let trDay of travelodeDetailsUI.travelodeDays; index as i">
-            <Label text="{{trDay.date}}" class="travelode-details-date"></Label>
+            <StackLayout *ngFor="let trDay of travelodeDetailsUI.travelodeDays; index as i">
+                <Label text="{{trDay.date}}" class="travelode-details-date"></Label>
 
-            <StackLayout *ngFor="let trMUnit of trDay.travelodeMediaUnits; index as j" class="travelode-details-medias">
+                <StackLayout *ngFor="let trMUnit of trDay.travelodeMediaUnits; index as j" class="travelode-details-medias">
 
-                <FlexboxLayout flexWrap="nowrap" flexDirection="row" class="travelode-details-media">
+                    <FlexboxLayout flexWrap="nowrap" flexDirection="row" class="travelode-details-media">
 
-                    <FlexboxLayout flexWrap="wrap" flexDirection="column" justifyContent="flex-start" width="60%">
-                        <Label text="{{trMUnit.time}}" class="travelode-details-media-time" verticalAlignment="top"></Label>
-                        <Label text="{{trMUnit.mediaTitle}}" class="travelode-details-media-title" verticalAlignment="top" textWrap="true"></Label>
-                        <Label text="{{trMUnit.mediaCaption}}" class="travelode-details-media-caption" verticalAlignment="bottom" textWrap="true"></Label>
+                        <FlexboxLayout flexWrap="wrap" flexDirection="column" justifyContent="flex-start" width="60%">
+                            <Label text="{{trMUnit.time}}" class="travelode-details-media-time" verticalAlignment="top"></Label>
+                            <Label text="{{trMUnit.mediaTitle}}" class="travelode-details-media-title" verticalAlignment="top" textWrap="true"></Label>
+                            <Label text="{{trMUnit.mediaCaption}}" class="travelode-details-media-caption" verticalAlignment="bottom" textWrap="true"></Label>
+                        </FlexboxLayout>
+
+                        <FlexboxLayout width="40%">
+                            <image src="{{trMUnit.mediaUrl}}" class="travelode-details-media-image"></image>
+                        </FlexboxLayout>
+
                     </FlexboxLayout>
 
-                    <FlexboxLayout width="40%">
-                        <image src="{{trMUnit.mediaUrl}}" class="travelode-details-media-image"></image>
-                    </FlexboxLayout>
-
-                </FlexboxLayout>
+                </StackLayout>
 
             </StackLayout>
 
+            <Button text="Post more!" class="btn btn-secondary travelode-details-start-button" (tap)="startPosting()"></Button>
         </StackLayout>
-
-        <Button text="Post more!" class="btn btn-secondary travelode-details-start-button" (tap)="startPosting()"></Button>
-
-    </StackLayout>
+    </ScrollView>
 
     <StackLayout *ngIf="emptyTravelode">
         <Label text="You havent posted anything for this travelode yet." class="travelode-details-blank" textWrap="true"></Label>

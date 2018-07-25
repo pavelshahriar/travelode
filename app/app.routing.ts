@@ -14,6 +14,7 @@ import { TravelodeSwitchComponent }  from "~/pages/travelode/switch/travelode-sw
 import { MainActionBarComponent }    from "~/pages/template/main-action-bar/main-action-bar.component";
 import { SliderMenuComponent }       from "~/pages/template/slider-menu/slider-menu.component";
 import { LogoutComponent }           from "~/pages/logout/logout.component";
+import {PostEntryGalleryComponent} from "~/pages/post/entry/post-entry-gallery.component";
 
 export const routes = [
     {path: "",                      component: LoginComponent},
@@ -30,6 +31,7 @@ export const routes = [
     {path: "travelode/updated/:id", component: TravelodeCreatedComponent},
     {path: "post/start",            component: PostStartComponent},
     {path: "post/entry/camera",     component: PostEntryCameraComponent},
+    {path: "post/entry/gallery",    component: PostEntryGalleryComponent},
     {path: "post/details/local",    component: PostDetailsComponent},
     {path: "post/review/:id",       component: PostReviewComponent},
     {path: "post/edit/:id",         component: PostDetailsComponent},
@@ -50,6 +52,7 @@ export const navigatableComponents = [
     TravelodeCreatedComponent,
     PostStartComponent,
     PostEntryCameraComponent,
+    PostEntryGalleryComponent,
     PostDetailsComponent,
     PostReviewComponent,
     PostSuccessComponent

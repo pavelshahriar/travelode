@@ -1,8 +1,8 @@
 <appMainActionBar [showSlider]="true"></appMainActionBar>
-<StackLayout orientation="vertical" class="container-loose">
+<StackLayout orientation="vertical" class="p-t-20 p-b-20">
     <Label text="Browse travelodes" class="travelode-list-heading tertiary"></Label>
 
-    <StackLayout *ngIf="travelodeList" class="travelode-list-items">
+    <StackLayout *ngIf="travelodeList" class="p-30 travelode-list-items">
         <StackLayout *ngFor="let trY of travelodeList.travelodesByYear; index as i">
             <Label text="{{trY.year}}" class="travelode-list-year"></Label>
 

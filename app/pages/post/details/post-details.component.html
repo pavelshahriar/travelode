@@ -8,7 +8,7 @@
         <Label *ngIf="editing" text="Edit post" class="post-details-heading tertiary text-center m-b-20" textWrap="true"></Label>
         <Image class="post-details-media-holder" src="{{localMedia.url}}"></Image>
         <StackLayout orientation="vertical" class="container-tight">
-            <TextField hint="Title*" class="text-center" autocorrect="false" autocapitalizationType="none" [(ngModel)]="localMedia.title"></TextField>
+            <TextField hint="Title*" autocorrect="false" autocapitalizationType="none" [(ngModel)]="localMedia.title"></TextField>
             <TextView  height="100" borderColor="#DEDEDE" borderWidth="1" hint="A short story of the post*"  returnKeyType="send" class="post-details-media-details" [(ngModel)]="localMedia.story"></TextView>
             <FlexboxLayout orientation="horizontal" class="post-details-buttons">
                 <Button text="Cancel" class="btn-secondary post-details-buttons-button" (tap)="cancel()"></Button>

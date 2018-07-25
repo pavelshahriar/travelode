@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular";
 import * as camera from "nativescript-camera";
+import * as imagepicker from "nativescript-imagepicker";
 import * as appSettings from "tns-core-modules/application-settings";
 
 @Component({
@@ -86,5 +87,12 @@ export class PostStartComponent implements OnInit {
 
     gallerySelected() {
         console.log('Gallery icon tapped !');
+        imagepicker.create().authorize()
+            .then(() => {
+                this.router.navigate(['/post/entry/gallery']);
+            })
+            .catch(function (e) {
+                alert('Ummh, how do you plan on loading gallery photo without giving access?')
+            });
     }
 }
