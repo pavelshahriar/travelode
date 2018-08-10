@@ -1,9 +1,9 @@
 import { NgModule } from "@angular/core";
 
-import { LoadingIndicatorHelper } from "../../shared/helpers/loading-indicator-helper";
-import { TravelodeListUiHelper } from "../../shared/helpers/travelode-list-ui-helper";
-import { TravelodeDetailsUiHelper } from "~/shared/helpers/travelode-details-ui-helper";
-import {RequestHelper} from "~/shared/helpers/request-helper";
+import { LoadingIndicatorHelper } from "./loading-indicator-helper";
+import { TravelodeListUiHelper } from "./travelode-list-ui-helper";
+import { TravelodeDetailsUiHelper } from "./travelode-details-ui-helper";
+import {RequestHelper} from "./request-helper";
 
 @NgModule({
     providers: [

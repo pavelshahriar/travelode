@@ -6,11 +6,11 @@ import "rxjs/add/operator/concatMap";
 import * as util from "util";
 
 import * as Config from "~/config/config.json";
-import {TravelodeMedia} from "~/shared/models/travelode-media";
-import {Media} from "~/shared/models/media";
-import {Travelode} from "~/shared/models/travelode";
-import {TravelodeMediaPojo} from "~/shared/models/travelode-media-pojo";
-import {RequestHelper} from "~/shared/helpers/request-helper";
+import {TravelodeMedia} from "../models/travelode-media";
+import {Media} from "../models/media";
+import {Travelode} from "../models/travelode";
+import {TravelodeMediaPojo} from "../models/travelode-media-pojo";
+import {RequestHelper} from "../helpers/request-helper";
 
 @Injectable()
 export class TravelodeMediaService {

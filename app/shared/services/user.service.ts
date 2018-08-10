@@ -7,10 +7,10 @@ import * as util from "util";
 
 import * as Config from "../../config/config.json";
 import {LoginCredential} from "../models/login-credential";
-import {User} from "~/shared/models/user";
-import {RequestHelper} from "~/shared/helpers/request-helper";
-import {Media} from "~/shared/models/media";
-import {UserPojo} from "~/shared/models/user-pojo";
+import {User} from "../models/user";
+import {RequestHelper} from "../helpers/request-helper";
+import {Media} from "../models/media";
+import {UserPojo} from "../models/user-pojo";
 
 @Injectable()
 export class UserService {

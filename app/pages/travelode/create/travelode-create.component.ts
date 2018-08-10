@@ -1,12 +1,12 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {RouterExtensions} from "nativescript-angular";
+import * as appSettings from "application-settings";
 import * as util from "util";
 
 import {LoadingIndicatorHelper} from "../../../shared/helpers/loading-indicator-helper";
 import {Travelode} from "../../../shared/models/travelode";
 import {TravelodeService} from "../../../shared/services/travelode.service";
-import * as appSettings from "application-settings";
 
 @Component({
     selector: "my-app-travelode-create",

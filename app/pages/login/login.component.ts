@@ -5,12 +5,12 @@ import * as util from "util";
 import * as appSettings from "application-settings";
 import * as Dialogs from "tns-core-modules/ui/dialogs"
 
-import {LoadingIndicatorHelper} from "~/shared/helpers/loading-indicator-helper";
-import {LoginCredential} from "~/shared/models/login-credential";
-import {UserService} from "~/shared/services/user.service";
-import {TravelodeService} from "~/shared/services/travelode.service";
-import {Travelode} from "~/shared/models/travelode";
-import {User} from "~/shared/models/user";
+import {LoadingIndicatorHelper} from "../../shared/helpers/loading-indicator-helper";
+import {LoginCredential} from "../../shared/models/login-credential";
+import {UserService} from "../../shared/services/user.service";
+import {TravelodeService} from "../../shared/services/travelode.service";
+import {Travelode} from "../../shared/models/travelode";
+import {User} from "../../shared/models/user";
 
 @Component({
     selector: "my-app-login",

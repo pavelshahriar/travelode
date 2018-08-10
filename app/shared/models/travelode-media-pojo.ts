@@ -1,6 +1,6 @@
-import {Media} from "~/shared/models/media";
-import {TravelodeMedia} from "~/shared/models/travelode-media";
-import {Travelode} from "~/shared/models/travelode";
+import {Media} from "./media";
+import {TravelodeMedia} from "./travelode-media";
+import {Travelode} from "./travelode";
 
 export class TravelodeMediaPojo {
     id: number;

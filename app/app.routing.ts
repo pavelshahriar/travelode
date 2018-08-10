@@ -10,11 +10,11 @@ import { PostSuccessComponent }      from "./pages/post/success/post-success.com
 import { PostStartComponent }        from "./pages/post/start/post-start.component";
 import { PostReviewComponent}        from "./pages/post/review/post-review.component";
 import { TravelodeDetailsComponent } from "./pages/travelode/details/travelode-details.component";
-import { TravelodeSwitchComponent }  from "~/pages/travelode/switch/travelode-switch.component";
-import { MainActionBarComponent }    from "~/pages/template/main-action-bar/main-action-bar.component";
-import { SliderMenuComponent }       from "~/pages/template/slider-menu/slider-menu.component";
-import { LogoutComponent }           from "~/pages/logout/logout.component";
-import {PostEntryGalleryComponent} from "~/pages/post/entry/post-entry-gallery.component";
+import { TravelodeSwitchComponent }  from "./pages/travelode/switch/travelode-switch.component";
+import { MainActionBarComponent }    from "./pages/template/main-action-bar/main-action-bar.component";
+import { SliderMenuComponent }       from "./pages/template/slider-menu/slider-menu.component";
+import { LogoutComponent }           from "./pages/logout/logout.component";
+import {PostEntryGalleryComponent}   from "./pages/post/entry/post-entry-gallery.component";
 
 export const routes = [
     {path: "",                      component: LoginComponent},

@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-// import {RouterExtensions} from "nativescript-angular";
 import { fromFile } from "tns-core-modules/image-source";
 import * as appSettings from "tns-core-modules/application-settings";
 import * as util from "util";
@@ -46,8 +45,8 @@ export class PostDetailsComponent implements OnInit {
                 if (params['path']) {
                     this.localMedia = new LocalMedia(params['path']);
                     LoadingIndicatorHelper.hideLoader();
-                    // const imageFromLocalFile = fromFile(this.localMedia.url);
-                    // console.log(imageFromLocalFile.height);
+                    const imageFromLocalFile = fromFile(this.localMedia.url);
+                    console.log(imageFromLocalFile.height);
                 }
             });
         } else if (entryPoint === 'edit') {

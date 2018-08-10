@@ -17,7 +17,8 @@ export class MediaService {
             let session = BackgroundHttp.session("file-upload");
             let request = {
                 url: Config.apiUrl + "media",
-                method: "POST"
+                method: "POST",
+                description: "Media uploader"
             };
             let params = [
                 { "name": "userId", "value": ""+appSettings.getNumber('userId')},

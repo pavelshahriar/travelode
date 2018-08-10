@@ -1,14 +1,11 @@
 import {Component} from "@angular/core";
-import {LoginCredential} from "../../shared/models/login-credential";
 import {Router} from "@angular/router";
+import {Page} from "tns-core-modules/ui/page";
 import * as util from "util";
-import * as appSettings from "application-settings";
 
+import {LoginCredential} from "../../shared/models/login-credential";
 import {UserService} from "../../shared/services/user.service";
 import {TravelodeService} from "../../shared/services/travelode.service";
-import {Travelode} from "../../shared/models/travelode";
-import {Page} from "tns-core-modules/ui/page";
-import {HttpResponse} from "@angular/common/http";
 
 @Component({
     selector: "my-app-login",
@@ -26,7 +23,6 @@ export class SignupComponent {
     constructor(
         private router: Router,
         private userService: UserService,
-        private travelodeService: TravelodeService,
         public page: Page
     ) {
         this.login_credential = new LoginCredential();

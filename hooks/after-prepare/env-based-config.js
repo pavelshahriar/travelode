@@ -1,14 +1,14 @@
-var path = require("path");
-var fs = require('fs');
-var mkdirp = require('mkdirp');
+const path = require("path");
+const fs = require('fs');
+const mkdirp = require('mkdirp');
 
 module.exports = function (logger, projectData, usbLiveSyncService) {
 
-    var readStream = null;
-    var writeStream = null;
-    var hasError = false;
+    let readStream = null;
+    let writeStream = null;
+    let hasError = false;
 
-    function rejectCleanup(err, reject) {
+    function rejectCleanup(err) {
         hasError = true;
 
         readStream.destroy();
@@ -18,14 +18,14 @@ module.exports = function (logger, projectData, usbLiveSyncService) {
     }
 
     function createReadStream(buildProfile) {
-        var fileToRead = path.join(projectData.projectDir, 'config', 'config.' + buildProfile + '.json');
+        const fileToRead = path.join(projectData.projectDir, 'config', 'config.' + buildProfile + '.json');
 
         readStream = fs.createReadStream(fileToRead);
         readStream.on('error', rejectCleanup);
     }
 
     function createWriteStream(directoryToWriteTo, resolve) {
-        var fileToWriteTo = path.join(directoryToWriteTo, 'config.json');
+        const fileToWriteTo = path.join(directoryToWriteTo, 'config.json');
 
         writeStream = fs.createWriteStream(fileToWriteTo);
         writeStream.on('error', rejectCleanup);
@@ -43,8 +43,8 @@ module.exports = function (logger, projectData, usbLiveSyncService) {
             return;
         }
 
-        var buildProfile = process.env['BUILD_PROFILE'];
-        var directoryToWriteTo = path.join(projectData.projectDir, 'app', 'config');
+        const buildProfile = process.env['BUILD_PROFILE'];
+        const directoryToWriteTo = path.join(projectData.projectDir, 'app', 'config');
 
         mkdirp(directoryToWriteTo, function (err) {
             if (!err) {

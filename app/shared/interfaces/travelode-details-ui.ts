@@ -1,4 +1,4 @@
-import {TravelodeDetailsUiDay} from "~/shared/interfaces/travelode-details-ui-day";
+import {TravelodeDetailsUiDay} from "./travelode-details-ui-day";
 
 export interface TravelodeDetailsUi {
     travelodeId: number;

@@ -1,14 +1,15 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {RouterExtensions} from "nativescript-angular";
+import * as appSettings from "tns-core-modules/application-settings";
 import * as util from "util";
 
-import {TravelodeService} from "~/shared/services/travelode.service";
-import {LoadingIndicatorHelper} from "~/shared/helpers/loading-indicator-helper";
-import {TravelodeMediaService} from "~/shared/services/travelode-media.service";
-import {TravelodeDetailsUi} from "~/shared/interfaces/travelode-details-ui";
-import {TravelodeDetailsUiHelper} from "~/shared/helpers/travelode-details-ui-helper";
-import * as appSettings from "tns-core-modules/application-settings";
+import {TravelodeService} from "../../../shared/services/travelode.service";
+import {LoadingIndicatorHelper} from "../../../shared/helpers/loading-indicator-helper";
+import {TravelodeMediaService} from "../../../shared/services/travelode-media.service";
+import {TravelodeDetailsUi} from "../../../shared/interfaces/travelode-details-ui";
+import {TravelodeDetailsUiHelper} from "../../../shared/helpers/travelode-details-ui-helper";
+
 
 @Component({
     selector: "my-app-travelode-details",

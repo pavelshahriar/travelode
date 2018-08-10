@@ -7,10 +7,9 @@ import * as app from "tns-core-modules/application";
 import * as appSettings from "tns-core-modules/application-settings";
 import * as util from "util";
 
-import {UserService} from "~/shared/services/user.service";
-import {LoadingIndicatorHelper} from "~/shared/helpers/loading-indicator-helper";
-import {UserPojo} from "~/shared/models/user-pojo";
-import {User} from "~/shared/models/user";
+import {UserService} from "../../../shared/services/user.service";
+import {LoadingIndicatorHelper} from "../../../shared/helpers/loading-indicator-helper";
+import {UserPojo} from "../../../shared/models/user-pojo";
 
 @Component({
     selector: 'appSliderMenu',

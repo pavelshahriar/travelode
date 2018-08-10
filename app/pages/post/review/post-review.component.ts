@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import {RouterExtensions} from "nativescript-angular";
 import * as util from "util";
-import {TravelodeMedia} from "../../../shared/models/travelode-media";
 import {TravelodeMediaService} from "../../../shared/services/travelode-media.service";
 import {TravelodeMediaPojo} from "../../../shared/models/travelode-media-pojo";
 
@@ -39,15 +38,6 @@ export class PostReviewComponent implements OnInit {
                     );
             }
         });
-
-                // this.travelodeMediaService.getOneById(32)
-                //     .subscribe(
-                //         (data) => {
-                //             console.log(util.inspect(data, false, null));
-                //             this.travelodeMedia = data;
-                //         }
-                //     );
-
     }
 
     get canGoBack(): boolean {

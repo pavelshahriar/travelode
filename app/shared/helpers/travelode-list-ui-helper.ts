@@ -1,6 +1,6 @@
 import * as moment from "moment";
 import * as lodash from "lodash";
-import {Travelode} from "../../shared/models/travelode";
+import {Travelode} from "../models/travelode";
 import {TravelodeListUi} from "../interfaces/travelode-list-ui";
 
 export class TravelodeListUiHelper {
@@ -8,8 +8,7 @@ export class TravelodeListUiHelper {
         let trui: TravelodeListUi = {travelodesByYear: []};
 
         // sort
-        let sortedTravelodes = lodash.orderBy(trl, ['created'], ['desc']);
-        trl = sortedTravelodes;
+        trl = lodash.orderBy(trl, ['created'], ['desc']);
 
         // construct
         trl.forEach(travelode => {

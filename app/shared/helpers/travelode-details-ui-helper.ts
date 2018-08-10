@@ -1,9 +1,9 @@
 import * as moment from "moment";
 import * as lodash from "lodash";
 
-import {Travelode} from "~/shared/models/travelode";
-import {TravelodeMediaPojo} from "~/shared/models/travelode-media-pojo";
-import {TravelodeDetailsUi} from "~/shared/interfaces/travelode-details-ui";
+import {Travelode} from "../models/travelode";
+import {TravelodeMediaPojo} from "../models/travelode-media-pojo";
+import {TravelodeDetailsUi} from "../interfaces/travelode-details-ui";
 
 export class TravelodeDetailsUiHelper {
     public getTravelodeDetailsUi(tr: Travelode, trmpjs: Array<TravelodeMediaPojo>): TravelodeDetailsUi {

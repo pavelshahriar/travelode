@@ -1,9 +1,9 @@
 import { NgModule } from "@angular/core";
 
-import { UserService } from "../../shared/services/user.service";
-import { TravelodeService } from "../../shared/services/travelode.service";
-import { MediaService } from "../../shared/services/media.service";
-import { TravelodeMediaService } from "../../shared/services/travelode-media.service";
+import { UserService } from "./user.service";
+import { TravelodeService } from "./travelode.service";
+import { MediaService } from "./media.service";
+import { TravelodeMediaService } from "./travelode-media.service";
 
 @NgModule({
     providers: [

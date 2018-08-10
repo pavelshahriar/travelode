@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import * as util from "util";
 
 import * as Config from "../../config/config.json";
 import {Travelode} from "../models/travelode";
 import {Observable} from "rxjs/Rx";
-import {RequestHelper} from "~/shared/helpers/request-helper";
+import {RequestHelper} from "../helpers/request-helper";
 
 @Injectable()
 export class TravelodeService {

@@ -1,5 +1,5 @@
-import {Media} from "~/shared/models/media";
-import {User} from "~/shared/models/user";
+import {Media} from "./media";
+import {User} from "./user";
 
 export class UserPojo {
     id: number;

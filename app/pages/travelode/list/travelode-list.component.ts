@@ -4,11 +4,11 @@ import { RouterExtensions } from "nativescript-angular";
 import * as appSettings from "application-settings";
 import * as util from "util";
 
-import { Travelode } from "~/shared/models/travelode";
-import { TravelodeService } from "~/shared/services/travelode.service";
-import { TravelodeListUi } from "~/shared/interfaces/travelode-list-ui";
-import { TravelodeListUiHelper } from "~/shared/helpers/travelode-list-ui-helper";
-import { LoadingIndicatorHelper } from "~/shared/helpers/loading-indicator-helper";
+import { Travelode } from "../../../shared/models/travelode";
+import { TravelodeService } from "../../../shared/services/travelode.service";
+import { TravelodeListUi } from "../../../shared/interfaces/travelode-list-ui";
+import { TravelodeListUiHelper } from "../../../shared/helpers/travelode-list-ui-helper";
+import { LoadingIndicatorHelper } from "../../../shared/helpers/loading-indicator-helper";
 
 @Component({
     selector: "my-app-travelode-list",
