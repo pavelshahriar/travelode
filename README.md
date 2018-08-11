@@ -1,6 +1,8 @@
 ## Enviorment Setup
-##### 1. Install Node + NPM through NVM
+##### 1. Install Node + NPM through NVM on Mac
 Follow instructions here : https://github.com/creationix/nvm#install-script
+##### 1.1 Install Node + NPM through NVM on Windows
+Follow instructions from here: https://github.com/coreybutler/nvm-windows
 ##### 2. Install Nativescript
 ```
 npm install -g nativescript
