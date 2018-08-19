@@ -1,19 +1,20 @@
 <appMainActionBar [showSlider]="true"></appMainActionBar>
-<StackLayout orientation="vertical" class="container-loose">
-    <Label text="Start posting" class="post-start-heading tertiary text-center"></Label>
-    <Label text="&quot;Lets create some beautiful travel stories&quot;" class="post-start-tag tertiary text-center" textWrap="true"></Label>
-    <StackLayout orientation="horizontal" horizontalAlignment="center" class="text-center post-start-travelode">
-        <Label class="post-start-travelode-label" text="Travelode: "></Label>
-        <Label class="post-start-travelode-switch tertiary" text="{{travelodeTitle}}" (tap)="switchTravelode()"></Label>
+
+    <StackLayout orientation="vertical" class="container-loose">
+        <Label text="Start posting" class="post-start-heading tertiary text-center"></Label>
+        <Label text="&quot;Lets create some beautiful travel stories&quot;" class="post-start-tag tertiary text-center" textWrap="true"></Label>
+        <StackLayout orientation="horizontal" horizontalAlignment="center" class="text-center post-start-travelode">
+            <Label class="post-start-travelode-label" text="Travelode: "></Label>
+            <Label class="post-start-travelode-switch tertiary" text="{{travelodeTitle}}" (tap)="switchTravelode()"></Label>
+        </StackLayout>
+        <FlexboxLayout orientation="horizontal" class="post-start-icon-group">
+            <StackLayout orientation="vertical" class="div-border-thick secondary-border post-start-icon-group-item" (tap)="cameraSelected()">
+                <Image src="~/images/camera-icon.png" class="post-start-icon-group-item-icon"></Image>
+                <Label text="Take a photo" class="tertiary text-center post-start-icon-group-item-text"></Label>
+            </StackLayout>
+            <StackLayout orientation="vertical" class="div-border-thick secondary-border post-start-icon-group-item" (tap)="gallerySelected()">
+                <Image src="~/images/gallery-icon.png" class="post-start-icon-group-item-icon"></Image>
+                <Label text="Load from gallery" class="tertiary text-center post-start-icon-group-item-text"></Label>
+            </StackLayout>
+        </FlexboxLayout>
     </StackLayout>
-    <FlexboxLayout orientation="horizontal" class="post-start-icon-group">
-        <StackLayout orientation="vertical" class="div-border-thick secondary-border post-start-icon-group-item" (tap)="cameraSelected()">
-            <Image src="~/images/camera-icon.png" class="post-start-icon-group-item-icon"></Image>
-            <Label text="Take a photo" class="tertiary text-center post-start-icon-group-item-text"></Label>
-        </StackLayout>
-        <StackLayout orientation="vertical" class="div-border-thick secondary-border post-start-icon-group-item" (tap)="gallerySelected()">
-            <Image src="~/images/gallery-icon.png" class="post-start-icon-group-item-icon"></Image>
-            <Label text="Load from gallery" class="tertiary text-center post-start-icon-group-item-text"></Label>
-        </StackLayout>
-    </FlexboxLayout>
-</StackLayout>

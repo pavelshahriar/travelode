@@ -1,14 +1,16 @@
-<StackLayout class="container-tight">
-    <Image src="~/images/logo-fat-transparent.png" class="signup-logo"></Image>
-    <TextField hint="Email Address" keyboardType="email" class="signup-form-input"
-               autocorrect="false" autocapitalizationType="none" [(ngModel)]="login_credential.email"></TextField>
-    <TextField hint="Password" secure="true" class="signup-form-input"
-               [(ngModel)]="login_credential.password"></TextField>
+<ScrollView>
+    <StackLayout class="container-tight">
+        <Image src="~/images/logo-fat-transparent.png" class="signup-logo"></Image>
+        <TextField hint="Email Address" keyboardType="email" class="signup-form-input"
+                   autocorrect="false" autocapitalizationType="none" [(ngModel)]="login_credential.email"></TextField>
+        <TextField hint="Password" secure="true" class="signup-form-input"
+                   [(ngModel)]="login_credential.password"></TextField>
 
-    <Button text="Sign up" class="btn-secondary signup-button" (tap)="singUp()"></Button>
-    <StackLayout orientation="horizontal" horizontalAlignment="center">
-        <Label text="Have an account? " class="signup-login-dialogue"></Label>
-        <Label text="Login" (tap)="login()" class="signup-login-dialogue tertiary"></Label>
-        <Label text=" here" class="signup-login-dialogue"></Label>
+        <Button text="Sign up" class="btn-secondary signup-button" (tap)="singUp()"></Button>
+        <StackLayout orientation="horizontal" horizontalAlignment="center">
+            <Label text="Have an account? " class="signup-login-dialogue"></Label>
+            <Label text="Login" (tap)="login()" class="signup-login-dialogue tertiary"></Label>
+            <Label text=" here" class="signup-login-dialogue"></Label>
+        </StackLayout>
     </StackLayout>
-</StackLayout>
+</ScrollView>
