@@ -2,12 +2,14 @@
     <Label text="travelode" class="font-weight-bold primary"></Label>
 </ActionBar>
 
-<StackLayout orientation="vertical" class="container-tight">
-    <Label text="Start your journey with" class="travelode-heading tertiary text-center"></Label>
-    <Label text="travelode" class="travelode-heading tertiary"></Label>
-    <Image src="~/images/logo-fat-transparent.png" class="logo"></Image>
-    <Label text="Record your memories with photos and a short description as you travel through your trip." class="travelode-para" textWrap="true"></Label>
-    <Label text="Let us organize them into beautiful stories in chronological order and map your travel. Look back, relive the memories and share with friends." class="travelode-para" textWrap="true"></Label>
+<ScrollView>
+    <StackLayout orientation="vertical" class="container-tight">
+        <Label text="Start your journey with" class="travelode-heading tertiary text-center"></Label>
+        <Label text="travelode" class="travelode-heading tertiary"></Label>
+        <Image src="~/images/logo-fat-transparent.png" class="logo"></Image>
+        <Label text="Record your memories with photos and a short description as you travel through your trip." class="travelode-para" textWrap="true"></Label>
+        <Label text="Let us organize them into beautiful stories in chronological order and map your travel. Look back, relive the memories and share with friends." class="travelode-para" textWrap="true"></Label>
 
-    <Button text="Let's get going then" class="btn-tertiary travelode-button" (tap)="createTravelodeButtonPressed()"></Button>
-</StackLayout>
+        <Button text="Let's get going then" class="btn-tertiary travelode-button" (tap)="createTravelodeButtonPressed()"></Button>
+    </StackLayout>
+</ScrollView>

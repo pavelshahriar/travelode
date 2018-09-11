@@ -1,32 +1,34 @@
 <appMainActionBar [showSlider]="true"></appMainActionBar>
-<StackLayout orientation="vertical" class="p-t-20 p-b-20">
-    <Label text="Browse travelodes" class="travelode-list-heading tertiary"></Label>
+<ScrollView>
+    <StackLayout orientation="vertical" class="p-t-20 p-b-20">
+        <Label text="Browse travelodes" class="travelode-list-heading tertiary"></Label>
 
-    <StackLayout *ngIf="travelodeList" class="p-30 travelode-list-items">
-        <StackLayout *ngFor="let trY of travelodeList.travelodesByYear; index as i">
-            <Label text="{{trY.year}}" class="travelode-list-year"></Label>
+        <StackLayout *ngIf="travelodeList" class="p-30 travelode-list-items">
+            <StackLayout *ngFor="let trY of travelodeList.travelodesByYear; index as i">
+                <Label text="{{trY.year}}" class="travelode-list-year"></Label>
 
-            <StackLayout *ngFor="let trM of trY.travelodesByMonth; index as j">
-                <Label text="{{trM.monthName}}" class="travelode-list-month"></Label>
+                <StackLayout *ngFor="let trM of trY.travelodesByMonth; index as j">
+                    <Label text="{{trM.monthName}}" class="travelode-list-month"></Label>
 
-                <StackLayout *ngFor="let trD of trM.travelodesByDate; index as k">
+                    <StackLayout *ngFor="let trD of trM.travelodesByDate; index as k">
 
-                    <StackLayout *ngFor="let tr of trD.travelodes" orientation="horizontal" class="travelode-list-day">
+                        <StackLayout *ngFor="let tr of trD.travelodes" orientation="horizontal" class="travelode-list-day">
 
-                        <Label text="{{trD.day}}" class="travelode-list-day-date"></Label>
-                        <Label text="{{tr.title}}" class="travelode-list-day-title" (tap)="itemTapped(tr)"></Label>
+                            <Label text="{{trD.day}}" class="travelode-list-day-date"></Label>
+                            <Label text="{{tr.title}}" class="travelode-list-day-title" (tap)="itemTapped(tr)"></Label>
+
+                        </StackLayout>
 
                     </StackLayout>
-
                 </StackLayout>
             </StackLayout>
         </StackLayout>
+
+        <StackLayout *ngIf="!travelodeList">
+            <Label textWrap="true" text="You haven't created any travelode yet." class="travelode-list-blank"></Label>
+        </StackLayout>
+
+        <Button text="Create new!" class="btn btn-secondary travelode-list-create-button" (tap)="createNewTapped()"></Button>
+
     </StackLayout>
-
-    <StackLayout *ngIf="!travelodeList">
-        <Label textWrap="true" text="You haven't created any travelode yet." class="travelode-list-blank"></Label>
-    </StackLayout>
-
-    <Button text="Create new!" class="btn btn-secondary travelode-list-create-button" (tap)="createNewTapped()"></Button>
-
-</StackLayout>
+</ScrollView>
