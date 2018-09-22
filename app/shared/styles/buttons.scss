@@ -22,4 +22,18 @@
     padding: 15;
     border-radius: 2;
   }
+
+  &-category {
+    background-color: #f5f5f5;
+    color: black;
+    padding: 5 15;
+    border-radius: 5;
+    margin-left: 10;
+    margin-right: 10; 
+
+    &-selected {
+      background-color: $primary-color;
+      color: white;
+    }
+  }
 }
