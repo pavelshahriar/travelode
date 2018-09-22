@@ -8,7 +8,10 @@ import { LoadingIndicatorHelper } from "../../../shared/helpers/loading-indicato
 import { LocalMedia } from "../../../shared/models/local-media";
 import { MediaService } from "../../../shared/services/media.service";
 import { TravelodeMediaService } from "../../../shared/services/travelode-media.service";
-import { TravelodeMedia} from "../../../shared/models/travelode-media";
+import { TravelodeMedia } from "../../../shared/models/travelode-media";
+import { TravelodeMediaCategory } from "../../../shared/models/travelode-media-category";
+import { TravelodeMediaCategoryService } from "../../../shared/services/travelode-media-category.service";
+import { CheckType } from "@angular/core/src/view";
 
 @Component({
     selector: "my-app-post-details",
@@ -24,14 +27,20 @@ export class PostDetailsComponent implements OnInit {
     private _editing: boolean = false;
     private _travelodeTitle: string;
     private _travelodeMedia: TravelodeMedia;
+    private _travelodeMediaCategory: TravelodeMediaCategory;
     private _localMedia: LocalMedia;
+    private catDoSelected: boolean = false;
+    private catEatSelected: boolean = false;
+    private catSeeSelected: boolean = false;
+
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private mediaService: MediaService,
-        private travelodeMediaService: TravelodeMediaService
-    ) {}
+        private travelodeMediaService: TravelodeMediaService,
+        private travelodeMediaCategoryService: TravelodeMediaCategoryService
+    ) { }
 
     ngOnInit() {
         this.travelodeTitle = appSettings.getString('travelodeTitle');
@@ -95,6 +104,10 @@ export class PostDetailsComponent implements OnInit {
         return this._travelodeMedia;
     }
 
+    get travelodeMediaCategory(): TravelodeMediaCategory {
+        return this._travelodeMediaCategory;
+    }
+
     set travelodeMedia(value: TravelodeMedia) {
         this._travelodeMedia = value;
     }
@@ -109,12 +122,12 @@ export class PostDetailsComponent implements OnInit {
 
     postTravelodeMedia() {
         console.log('Post media button tapped !');
-        if (this.localMedia.title && this.localMedia.story) {
+        if (this.localMedia.title && this.localMedia.story && (this.catSeeSelected || this.catDoSelected || this.catEatSelected)) {
             LoadingIndicatorHelper.showLoader();
             this.mediaService.create(this.localMedia.url).subscribe(
                 (res) => {
                     // console.log(util.inspect(res, false, null));
-                    if(res['status'] === 201) {
+                    if (res['status'] === 201) {
                         // alert ('Media Created');
 
                         this.travelodeMedia = new TravelodeMedia();
@@ -128,10 +141,37 @@ export class PostDetailsComponent implements OnInit {
                                 // console.log(util.inspect(data, false, null));
                                 LoadingIndicatorHelper.hideLoader();
                                 if (data.status === 201) {
-                                    alert ('Travelode post created');
-                                    this.router.navigate(['/post/success/'+ data.body['id']])
+
+                                    this._travelodeMediaCategory = new TravelodeMediaCategory();
+                                    this._travelodeMediaCategory.travelodeId = appSettings.getNumber('travelodeId');
+                                    this._travelodeMediaCategory.mediaId = res['data']['id'];
+
+                                    // TODO maybe make an array
+                                    if (this.catSeeSelected) {
+                                        this._travelodeMediaCategory.categoryId = 1;
+                                    } else if (this.catEatSelected) {
+                                        this._travelodeMediaCategory.categoryId = 2;
+                                    } else if (this.catDoSelected) {
+                                        this._travelodeMediaCategory.categoryId = 3;
+                                    }
+                                    // TODO add support for multi category selection
+                                    this.travelodeMediaCategoryService.create(this._travelodeMediaCategory).subscribe(
+                                        (data) => {
+                                            LoadingIndicatorHelper.hideLoader();
+                                            if (data.status === 201) {
+                                                alert('Travelode post created');
+                                                this.router.navigate(['/post/success/' + data.body['id']])
+
+                                            }
+                                            else {
+                                                alert('Bullocks !');
+                                            }
+                                        }
+                                    )
+
+
                                 } else {
-                                    alert ('Bullocks !');
+                                    alert('Bullocks !');
                                 }
                             }
                         );
@@ -144,7 +184,7 @@ export class PostDetailsComponent implements OnInit {
                 }
             );
         } else {
-            alert('We need the title and caption to save it. Lets put some info there. Ok ?')
+            alert('We need the title, caption and minimum one category to save it. Lets put some info there. Ok ?')
         }
     }
 
@@ -155,5 +195,32 @@ export class PostDetailsComponent implements OnInit {
     switchTravelode() {
         console.log('Switch travelode tapped !')
         this.router.navigate(['/travelode/list']);
+    }
+
+    onTapCatDo() {
+        if (this.catDoSelected) this.catDoSelected = false;
+        else this.catDoSelected = true;
+        console.log("Do was tapped, checkYes = ", this.catDoSelected);
+    }
+
+    onTapCatEat() {
+        if (this.catEatSelected) this.catEatSelected = false;
+        else this.catEatSelected = true;
+
+        console.log("Eat was tapped, checkYes = ", this.catEatSelected);
+    }
+
+    onTapCatSee() {
+        if (this.catSeeSelected) this.catSeeSelected = false;
+        else this.catSeeSelected = true;
+
+        console.log("See was tapped, checkYes = ", this.catSeeSelected);
+    }
+
+    convertCatToID(catName) {
+        if (catName = 'see') return 1;
+        else if (catName = 'eat') return 2;
+        else if (catName = 'do ') return 3;
+        else return null;
     }
 }
