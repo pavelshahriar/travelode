@@ -208,9 +208,9 @@ export class PostDetailsComponent implements OnInit {
         else item.selected = true;
         console.log(item);
 
-        this.catList.forEach((item, index) => {
+/*         this.catList.forEach((item, index) => {
             console.log(item, index);
-        });
+        }); */
     }
 
     anyCatSelected() {
