@@ -10,6 +10,11 @@
         <StackLayout orientation="vertical" class="container-tight">
             <TextField hint="Title*" autocorrect="false" autocapitalizationType="none" [(ngModel)]="localMedia.title"></TextField>
             <TextView  height="100" borderColor="#DEDEDE" borderWidth="1" hint="A short story of the post*"  returnKeyType="send" class="post-details-media-details" [(ngModel)]="localMedia.story"></TextView>
+            <StackLayout orientation="horizontal" horizontalAlignment="center" verticalAlignment="center" class="m-y-20">
+                <div *ngFor="let item of catList;">
+                <label text={{item.name}} (tap)="onTapCat(item)" class="{{ item.selected ? 'btn-category-selected' : 'btn-category'}} btn-category h3 text-center capitalize"></label>
+            </div>
+            </StackLayout>
             <FlexboxLayout orientation="horizontal" class="post-details-buttons">
                 <Button text="Cancel" class="btn-secondary post-details-buttons-button" (tap)="cancel()"></Button>
                 <Button text="Post" class="btn-primary post-details-buttons-button" (tap)="postTravelodeMedia()"></Button>

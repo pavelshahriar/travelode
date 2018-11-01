@@ -8,7 +8,11 @@ import { LoadingIndicatorHelper } from "../../../shared/helpers/loading-indicato
 import { LocalMedia } from "../../../shared/models/local-media";
 import { MediaService } from "../../../shared/services/media.service";
 import { TravelodeMediaService } from "../../../shared/services/travelode-media.service";
-import { TravelodeMedia} from "../../../shared/models/travelode-media";
+import { TravelodeMedia } from "../../../shared/models/travelode-media";
+import { TravelodeMediaCategory } from "../../../shared/models/travelode-media-category";
+import { TravelodeMediaCategoryService } from "../../../shared/services/travelode-media-category.service";
+import { CheckType } from "@angular/core/src/view";
+import { itemsProperty } from "tns-core-modules/ui/list-view/list-view";
 
 @Component({
     selector: "my-app-post-details",
@@ -24,14 +28,22 @@ export class PostDetailsComponent implements OnInit {
     private _editing: boolean = false;
     private _travelodeTitle: string;
     private _travelodeMedia: TravelodeMedia;
+    private _travelodeMediaCategory: TravelodeMediaCategory;
     private _localMedia: LocalMedia;
+
+    catList = [
+        { 'name': 'see', 'selected': false },
+        { 'name': 'eat', 'selected': false },
+        { 'name': 'do', 'selected': false },
+    ]
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private mediaService: MediaService,
-        private travelodeMediaService: TravelodeMediaService
-    ) {}
+        private travelodeMediaService: TravelodeMediaService,
+        private travelodeMediaCategoryService: TravelodeMediaCategoryService
+    ) { }
 
     ngOnInit() {
         this.travelodeTitle = appSettings.getString('travelodeTitle');
@@ -95,6 +107,10 @@ export class PostDetailsComponent implements OnInit {
         return this._travelodeMedia;
     }
 
+    get travelodeMediaCategory(): TravelodeMediaCategory {
+        return this._travelodeMediaCategory;
+    }
+
     set travelodeMedia(value: TravelodeMedia) {
         this._travelodeMedia = value;
     }
@@ -109,12 +125,12 @@ export class PostDetailsComponent implements OnInit {
 
     postTravelodeMedia() {
         console.log('Post media button tapped !');
-        if (this.localMedia.title && this.localMedia.story) {
+        if (this.localMedia.title && this.localMedia.story && this.anyCatSelected()) {
             LoadingIndicatorHelper.showLoader();
             this.mediaService.create(this.localMedia.url).subscribe(
                 (res) => {
                     // console.log(util.inspect(res, false, null));
-                    if(res['status'] === 201) {
+                    if (res['status'] === 201) {
                         // alert ('Media Created');
 
                         this.travelodeMedia = new TravelodeMedia();
@@ -126,12 +142,41 @@ export class PostDetailsComponent implements OnInit {
                         this.travelodeMediaService.create(this.travelodeMedia).subscribe(
                             (data) => {
                                 // console.log(util.inspect(data, false, null));
-                                LoadingIndicatorHelper.hideLoader();
                                 if (data.status === 201) {
-                                    alert ('Travelode post created');
-                                    this.router.navigate(['/post/success/'+ data.body['id']])
+
+                                    this._travelodeMediaCategory = new TravelodeMediaCategory();
+                                    this._travelodeMediaCategory.travelodeId = appSettings.getNumber('travelodeId');
+                                    this._travelodeMediaCategory.mediaId = res['data']['id'];
+
+                                    this.catList.forEach((item, index) => {
+                                        if (item.selected) {
+                                            // This is now hardcoded
+                                            // we could use a db query to search by name (item.name) and return the id
+                                            this._travelodeMediaCategory.categoryId = index + 1;
+                                            this.travelodeMediaCategoryService.create(this._travelodeMediaCategory).subscribe(
+                                                (data) => {
+                                                    if (data.status === 201) { }
+                                                    else {
+                                                        alert("Bullocks! Couldn't assign TravelodeMediaCategory");
+                                                    }
+                                                }
+                                            );
+                                        }
+
+                                        if (index == this.catList.length - 1) {
+                                            LoadingIndicatorHelper.hideLoader();
+                                            if (data.status === 201) {
+                                                alert('Travelode post created');
+                                                this.router.navigate(['/post/success/' + data.body['id']])
+                                            }
+                                            else {
+                                                alert('Bullocks !');
+                                            }
+                                        }
+                                    });
+
                                 } else {
-                                    alert ('Bullocks !');
+                                    alert('Bullocks !');
                                 }
                             }
                         );
@@ -144,7 +189,7 @@ export class PostDetailsComponent implements OnInit {
                 }
             );
         } else {
-            alert('We need the title and caption to save it. Lets put some info there. Ok ?')
+            alert('We need the title, caption and minimum one category to save it. Lets put some info there. Ok ?')
         }
     }
 
@@ -156,4 +201,22 @@ export class PostDetailsComponent implements OnInit {
         console.log('Switch travelode tapped !')
         this.router.navigate(['/travelode/list']);
     }
+
+
+    onTapCat(item) {
+        if (item.selected) item.selected = false;
+        else item.selected = true;
+        console.log(item);
+
+/*         this.catList.forEach((item, index) => {
+            console.log(item, index);
+        }); */
+    }
+
+    anyCatSelected() {
+        for (let i of this.catList) {
+            if (i.selected == true) return true;
+        }
+    }
+
 }

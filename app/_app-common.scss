@@ -16,6 +16,10 @@
 @import "./shared/styles/container.scss";
 @import "app-variables.scss";
 
+// Heading fonts
+h5 {
+  font-size: 20px;
+}
 // div colors
 .primary {
   color: $primary-color;
@@ -120,4 +124,10 @@
       }
     }
   }
+}
+
+// elements
+
+.capitalize {
+  text-transform: capitalize;
 }
