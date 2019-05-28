@@ -5,7 +5,7 @@ import {DrawerTransitionBase, SlideInOnTopTransition} from "nativescript-ui-side
 declare var android: any;
 
 @Component({
-  selector: "my-app",
+  selector: "App",
   templateUrl: "./app.component.html",
 })
 export class AppComponent implements OnInit{

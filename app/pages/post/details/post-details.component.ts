@@ -4,23 +4,19 @@ import { fromFile } from "tns-core-modules/image-source";
 import * as appSettings from "tns-core-modules/application-settings";
 import * as util from "util";
 
-import { LoadingIndicatorHelper } from "../../../shared/helpers/loading-indicator-helper";
-import { LocalMedia } from "../../../shared/models/local-media";
-import { MediaService } from "../../../shared/services/media.service";
-import { TravelodeMediaService } from "../../../shared/services/travelode-media.service";
-import { TravelodeMedia} from "../../../shared/models/travelode-media";
+import { LoadingIndicatorHelper } from "~/shared/helpers/loading-indicator-helper";
+import { LocalMedia } from "~/shared/models/local-media";
+import { MediaService } from "~/shared/services/media.service";
+import { TravelodeMediaService } from "~/shared/services/travelode-media.service";
+import { TravelodeMedia} from "~/shared/models/travelode-media";
 
 @Component({
-    selector: "my-app-post-details",
+    selector: "PostDetails",
     moduleId: module.id,
     templateUrl: "./post-details.component.html",
-    styleUrls: [
-        "./post-details-common.scss",
-        "./post-details.scss"
-    ]
+    styleUrls: ["./post-details.component.scss"]
 })
 export class PostDetailsComponent implements OnInit {
-    private _canGoBack: boolean;
     private _editing: boolean = false;
     private _travelodeTitle: string;
     private _travelodeMedia: TravelodeMedia;
@@ -65,14 +61,6 @@ export class PostDetailsComponent implements OnInit {
                 }
             })
         }
-    }
-
-    get canGoBack(): boolean {
-        return this._canGoBack;
-    }
-
-    set canGoBack(value: boolean) {
-        this._canGoBack = value;
     }
 
     get editing(): boolean {

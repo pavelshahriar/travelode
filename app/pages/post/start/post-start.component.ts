@@ -6,16 +6,12 @@ import * as imagepicker from "nativescript-imagepicker";
 import * as appSettings from "tns-core-modules/application-settings";
 
 @Component({
-    selector: "my-app-post-start",
+    selector: "PostStart",
     moduleId: module.id,
     templateUrl: "./post-start.component.html",
-    styleUrls: [
-        "./post-start-common.scss",
-        "./post-start.scss"
-    ]
+    styleUrls: ["./post-start.component.scss"]
 })
 export class PostStartComponent implements OnInit {
-    private _canGoBack: boolean;
     private _travelodeId: number;
     private _travelodeTitle: string;
 
@@ -25,22 +21,13 @@ export class PostStartComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.canGoBack = this.nav.canGoBack();
         this.travelodeId = appSettings.getNumber('travelodeId');
         this.travelodeTitle = appSettings.getString('travelodeTitle');
 
         if (!appSettings.getNumber('travelodeId')){
             alert('We gotta select a travelode first to start posting. Lets do that first?');
-            this.router.navigate(['/travelode/switch'], { queryParams: { set: true } })
+            this.router.navigate(['/travelode/default'], { queryParams: { set: true } })
         }
-    }
-
-    get canGoBack(): boolean {
-        return this._canGoBack;
-    }
-
-    set canGoBack(value: boolean) {
-        this._canGoBack = value;
     }
 
     get travelodeId(): number {
@@ -59,15 +46,9 @@ export class PostStartComponent implements OnInit {
         this._travelodeTitle = value;
     }
 
-    goBack() {
-        console.log('Nav button tapped !');
-        // topmost().goBack();
-        this.nav.back();
-    }
-
-    switchTravelode() {
+    setDefaultTravelode() {
         console.log('Switch travelode tapped !');
-        this.router.navigate(['/travelode/switch']);
+        this.router.navigate(['/travelode/default']);
     }
 
     cameraSelected() {

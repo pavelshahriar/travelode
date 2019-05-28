@@ -1,0 +1,33 @@
+@import '~nativescript-theme-core/scss/light';
+
+@import "./colors.scss";
+
+// Sizes
+$page-content-placeholder-font-size: 20;
+
+// Colors
+$background: #fff;
+$accent: $accent-dark;
+$error: $error-light;
+
+// SideDrawer
+$item-color-android : $black;
+$item-active-background: $secondary-color;;
+$item-active-color: $white;
+$item-active-icon-color: $white;
+$item-color-ios: $white;
+$item-color-android: $white;
+
+$side-drawer-header-background: #fafafa;
+$side-drawer-header-brand: #737373;
+$side-drawer-background: #FFFFFF;
+$sidedrawer-header-image-size: 60;
+$sidedrawer-header-image-offset-top: 20;
+$sidedrawer-header-image-offset-bottom: 5;
+$sidedrawer-list-item-offset-left: 15;
+$sidedrawer-list-icon-offset: 10;
+$sidedrawer-list-icon-size: 20;
+
+// ActionBar theme over rights
+$ab-background: $primary-color;
+$ab-color: $white;

@@ -4,26 +4,24 @@ import * as camera from "nativescript-camera";
 import { ImageSource } from "tns-core-modules/image-source";
 import * as FileSystem from "tns-core-modules/file-system";
 import { Router} from "@angular/router";
-import { RouterExtensions } from "nativescript-angular";
 import * as screenOrientation from "nativescript-screen-orientation";
 
 @Component({
-    selector: "my-app-post-entry-camera",
+    selector: "PostEntryCamera",
     moduleId: module.id,
     templateUrl: "./post-entry-camera.component.html",
 })
 export class PostEntryCameraComponent implements OnInit {
 
     constructor(
-        private router: Router,
-        private nav: RouterExtensions
+        private router: Router
     ) {}
 
     ngOnInit() {
-        screenOrientation.setCurrentOrientation('landscape',() => {
-            console.log('Orientation set to landscape.');
+        // screenOrientation.setCurrentOrientation('landscape',() => {
+        //     console.log('Orientation set to landscape.');
             this.takePicture();
-        })
+        // })
     }
 
     takePicture() {
@@ -51,14 +49,8 @@ export class PostEntryCameraComponent implements OnInit {
             })
             .catch((e) => {
                 console.log(e);
-                screenOrientation.orientationCleanup();
+                // screenOrientation.orientationCleanup();
                 topmost().goBack();
             });
-    }
-
-    goBack() {
-        console.log('Nav button tapped !');
-        // topmost().goBack();
-        this.nav.back();
     }
 }
