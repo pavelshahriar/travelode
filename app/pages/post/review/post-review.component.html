@@ -1,8 +1,4 @@
-<ActionBar class="action-bar">
-    <Label text="travelode" class="font-weight-bold primary"></Label>
-    <NavigationButton *ngIf="canGoBack" text="Back" android.systemIcon="ic_menu_back" (tap)="goBack()"></NavigationButton>
-</ActionBar>
-
+<PostActionBar [showBack]="true"></PostActionBar>
 <ScrollView>
     <StackLayout orientation="vertical" *ngIf="travelodeMedia" class="container-loose">
         <Label text="Review post" class="post-review-heading tertiary text-center" textWrap="true"></Label>

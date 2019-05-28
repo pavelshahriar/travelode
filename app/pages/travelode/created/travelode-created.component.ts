@@ -2,17 +2,14 @@ import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {RouterExtensions} from "nativescript-angular";
 import * as util from "util";
-import {TravelodeService} from "../../../shared/services/travelode.service";
-import {Travelode} from "../../../shared/models/travelode";
+import {TravelodeService} from "~/shared/services/travelode.service";
+import {Travelode} from "~/shared/models/travelode";
 
 @Component({
-    selector: "my-app-travelode-created",
+    selector: "TravelodeCreated",
     moduleId: module.id,
     templateUrl: "./travelode-created.component.html",
-    styleUrls: [
-        "./travelode-created-common.scss",
-        "./travelode-created.scss"
-    ]
+    styleUrls: ["./travelode-created.component.scss"]
 })
 export class TravelodeCreatedComponent implements OnInit {
     private _canGoBack: boolean;
@@ -63,7 +60,8 @@ export class TravelodeCreatedComponent implements OnInit {
             .subscribe(
                 (data: Travelode) => {
                     // console.log(util.inspect(data, false, null));
-                    this.travelode = data[0];
+                    this.travelode = data;
+                    // console.log(this.travelode)
                 }
             );
     }

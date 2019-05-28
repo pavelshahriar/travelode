@@ -1,0 +1,33 @@
+<TravelodeActionBar [showBack]="true" *ngIf="!isSetting"></TravelodeActionBar>
+<ScrollView>
+    <StackLayout orientation="vertical" class="container-tight">
+        <Label text="{{(isSetting) ? 'Set' : 'Switch'}} travelodes" class="travelode-default-heading tertiary text-center" [class.travelode-default-settop-pad]="isSetting"></Label>
+
+        <StackLayout *ngIf="travelodeList" class="travelode-default-items">
+            <Label text="Click on the travelode you want to {{(isSetting) ? 'set as default' : 'switch to'}}:" class="travelode-default-instruction" textWrap="true"></Label>
+
+            <StackLayout *ngFor="let trY of travelodeList.travelodesByYear">
+                <Label text="{{trY.year}}" class="travelode-default-year"></Label>
+
+                <StackLayout *ngFor="let trM of trY.travelodesByMonth">
+                    <Label text="{{trM.monthName}}" class="travelode-default-month"></Label>
+
+                    <StackLayout *ngFor="let trD of trM.travelodesByDate">
+
+                        <StackLayout *ngFor="let tr of trD.travelodes" orientation="horizontal" class="travelode-default-day"
+                                     [class.travelode-default-selected]="isSelected(tr.id)">
+
+                            <Label text="{{trD.day}}" class="travelode-default-day-date"></Label>
+                            <Label text="{{tr.title}}" class="travelode-default-day-title" (tap)="itemTapped(tr)"></Label>
+
+                            <Label *ngIf="isSelected(tr.id)" text="selected" class="travelode-default-day-selected"></Label>
+
+                        </StackLayout>
+
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+
+    </StackLayout>
+</ScrollView>

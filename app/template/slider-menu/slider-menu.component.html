@@ -1,0 +1,34 @@
+<!--<StackLayout class="sidedrawer-header" *ngIf="currentUser">-->
+    <!--<Label class="sidedrawer-header-image fa" text="&#xf2bd;" *ngIf="!(currentUser.photo)"></Label>-->
+    <!--<image class="sidedrawer-header-image" src="{{currentUser.photo.url}}" *ngIf="currentUser.photo"></image>-->
+    <!--<Label class="sidedrawer-header-brand sidedrawer-header-brand-name" text="{{currentUser.fullname}}"></Label>-->
+    <!--<Label class="sidedrawer-header-brand" text="{{currentUser.email}}"></Label>-->
+<!--</StackLayout>-->
+
+<StackLayout class="sidedrawer-header" backgroundColor="white">
+    <Image src="~/images/logo-fat-transparent.png" class="login-logo"></Image>
+</StackLayout>
+
+<ScrollView row="1">
+    <StackLayout class="sidedrawer-content">
+        <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/travelode/list')" (tap)="onNavItemTap('/travelode/list')">
+            <Label col="0" text="&#xf0ca;" class="fa"></Label>
+            <Label col="1" text="Tralovedes" class="p-r-10"></Label>
+        </GridLayout>
+        <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/post/start')" (tap)="onNavItemTap('/post/start')">
+            <Label col="0" text="&#xf0ee;" class="fa"></Label>
+            <Label col="1" text="Post" class="p-r-10"></Label>
+        </GridLayout>
+
+        <StackLayout class="hr-light"></StackLayout>
+
+        <!--<GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/')" (tap)="onNavItemTap('/settings')">-->
+            <!--<Label col="0" text="&#xf013;" class="fa"></Label>-->
+            <!--<Label col="1" text="Settings" class="p-r-10"></Label>-->
+        <!--</GridLayout>-->
+        <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/account/logout')" (tap)="onNavItemTap('/account/logout')">
+            <Label col="0" text="&#xf08b;" class="fa"></Label>
+            <Label col="1" text="Logout" class="p-r-10"></Label>
+        </GridLayout>
+    </StackLayout>
+</ScrollView>

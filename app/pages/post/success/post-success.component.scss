@@ -1,0 +1,56 @@
+@import "../../../styles/colors.scss";
+
+.post-success {
+
+  &-buttons {
+    margin-bottom: 50vh;
+  }
+
+  &-heading {
+    font-size: 25;
+    text-align: center;
+    margin-bottom: 10%;
+  }
+
+  &-review {
+    font-size: 20;
+    width: 250vw;
+    height: 60;
+    vertical-align: center;
+    text-align: center;
+    margin-bottom: 20;
+    color: $tertiary-color;
+  }
+
+  &-again {
+    font-size: 20;
+    width: 250vw;
+    height: 60;
+    vertical-align: center;
+    text-align: center;
+    background-color: $tertiary-color;
+    color: white;
+  }
+
+  &-info-box {
+    border-radius: 10;
+    padding: 12em;
+    color: black;
+    font-size: 13;
+    background-color: $secondary-color;
+
+    &-travelode {
+
+      &-title {
+        font-size: 18;
+        font-weight: 700;
+        text-align: center;
+      }
+
+      &-change {
+        text-align: center;
+        text-decoration: underline;
+      }
+    }
+  }
+}

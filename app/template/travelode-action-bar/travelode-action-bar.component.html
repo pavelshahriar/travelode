@@ -1,0 +1,29 @@
+<ActionBar class="action-bar">
+
+    <!-- FOR Slider Menu -->
+    <NavigationButton
+        ios:visibility="collapsed"
+        icon="res://menu"
+        (tap)="onDrawerButtonTap()"
+        *ngIf=showSlider
+    ></NavigationButton>
+    <ActionItem
+        android:visibility="collapsed"
+        icon="res://navigation/menu"
+        ios.position="left"
+        (tap)="onDrawerButtonTap()"
+        *ngIf = showSlider
+    ></ActionItem>
+
+    <!-- FOR BACK BUTTON -->
+    <NavigationButton
+        android.systemIcon="ic_menu_back"
+        text="Go Back"
+        (tap)="goBack()"
+        *ngIf="showBack && (canGoBack || backNavigationUrl)"
+    ></NavigationButton>
+
+    <!-- TITTLE -->
+    <Label class="action-bar-title" text="travelode"></Label>
+
+</ActionBar>

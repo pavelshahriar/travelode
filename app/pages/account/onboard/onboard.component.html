@@ -1,0 +1,15 @@
+<ActionBar class="action-bar">
+    <Label text="travelode" class="font-weight-bold primary"></Label>
+</ActionBar>
+
+<ScrollView>
+    <StackLayout orientation="vertical" class="container-tight">
+        <Label text="Start your journey with" class="onboard-heading tertiary text-center"></Label>
+        <Label text="travelode" class="onboard-heading tertiary"></Label>
+        <Image src="~/images/logo-fat-transparent.png" class="onboard-logo"></Image>
+        <Label text="Record your memories with photos and a short description as you travel through your trip." class="onboard-para" textWrap="true"></Label>
+        <Label text="Let us organize them into beautiful stories in chronological order and map your travel. Look back, relive the memories and share with friends." class="onboard-para" textWrap="true"></Label>
+
+        <Button text="Let's get going then" class="btn-tertiary onboard-button" (tap)="createTravelodeButtonPressed()"></Button>
+    </StackLayout>
+</ScrollView>

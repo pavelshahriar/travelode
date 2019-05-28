@@ -1,0 +1,72 @@
+@import "../../../styles/colors.scss";
+
+.travelode-details {
+
+  &-heading {
+    font-size: 25;
+    text-align: center;
+  }
+
+  &-title {
+    font-size: 20;
+    text-align: center;
+    margin-top: 30;
+    margin-bottom: 30;
+    font-weight: 700;
+  }
+
+  &-date {
+    font-size: 18;
+    font-weight: 700;
+    color: $secondary-color;
+    margin-bottom: 15;
+  }
+
+  &-medias {
+    font-size: 15;
+    margin-bottom: 10;
+  }
+
+  &-media {
+    border-bottom-width: 1;
+    border-bottom-color: #EDEDED;
+    padding: 10;
+
+    &-details {}
+
+    &-time {
+      font-size: 15;
+      font-weight: 300;
+      color: $primary-color;
+      margin-bottom: 5;
+    }
+
+    &-title {
+      font-weight: 700;
+      margin-bottom: 20;
+    }
+
+    &-caption {
+      margin-bottom: 10;
+    }
+
+    &-holder {}
+
+    &-image {
+      border-radius: 10;
+    }
+  }
+
+  &-blank {
+    margin-top: 30;
+    margin-bottom: 30;
+    padding: 20;
+    font-size: 18;
+    text-align: center;
+  }
+
+  &-start-button {
+    margin-top: 60;
+    padding: 20;
+  }
+}

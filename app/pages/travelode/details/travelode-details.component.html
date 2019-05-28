@@ -1,10 +1,5 @@
-<ActionBar class="action-bar">
-    <Label text="travelode" class="font-weight-bold primary"></Label>
-    <NavigationButton *ngIf="canGoBack" text="Back" android.systemIcon="ic_menu_back" (tap)="goBack()"></NavigationButton>
-</ActionBar>
-
+<TravelodeActionBar [showBack]="true"></TravelodeActionBar>
 <StackLayout orientation="vertical" class="p-t-20 p-b-20">
-    <Label text="Browse travelodes" class="travelode-details-heading tertiary text-center"></Label>
     <Label text="{{travelodeDetailsUI.travelodeTitle}}" class="travelode-details-title"></Label>
 
     <ScrollView orientation="vertical">

@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import * as util from "util";
+import * as lodash from "lodash";
 
 import * as Config from "../../config/config.json";
 import {Travelode} from "../models/travelode";
@@ -23,6 +24,8 @@ export class TravelodeService {
     update(tr: Travelode) {
         const url = Config.apiUrl + "travelode/" + tr.id;
         delete tr.id;
+        delete tr.created;
+        delete tr.userId;
         const body = JSON.stringify(tr);
         const headers = RequestHelper.getRequestHeader();
         RequestHelper.logRequest(url, 'PUT', body);

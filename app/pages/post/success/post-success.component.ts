@@ -4,16 +4,12 @@ import {RouterExtensions} from "nativescript-angular";
 import * as appSettings from "tns-core-modules/application-settings";
 
 @Component({
-    selector: "my-app-post-success",
+    selector: "PostSuccess",
     moduleId: module.id,
     templateUrl: "./post-success.component.html",
-    styleUrls: [
-        "./post-success-common.scss",
-        "./post-success.scss"
-    ]
+    styleUrls: ["./post-success.component.scss"]
 })
 export class PostSuccessComponent implements OnInit {
-    private _canGoBack: boolean;
     private _travelodeId: number;
     private _travelodeTitle: string;
     private _travelodeMediaId: number;
@@ -21,11 +17,9 @@ export class PostSuccessComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private router: Router,
-        private nav: RouterExtensions) {}
+        private router: Router) {}
 
     ngOnInit() {
-        this.canGoBack = this.nav.canGoBack();
         this.travelodeId = appSettings.getNumber('travelodeId');
         this.travelodeTitle = appSettings.getString('travelodeTitle');
         if (this.travelodeId && this.travelodeTitle) {
@@ -38,14 +32,6 @@ export class PostSuccessComponent implements OnInit {
         } else {
             this.router.navigate(['/travelode/list'])
         }
-    }
-
-    get canGoBack(): boolean {
-        return this._canGoBack;
-    }
-
-    set canGoBack(value: boolean) {
-        this._canGoBack = value;
     }
 
     get travelodeId(): number {
@@ -80,24 +66,18 @@ export class PostSuccessComponent implements OnInit {
         this._infoMessageHide = value;
     }
 
-    goBack() {
-        console.log('Nav button tapped !')
-        // topmost().goBack();
-        this.nav.back();
-    }
-
     reviewPost() {
-        console.log('review button tapped !')
+        console.log('Review button tapped !');
         this.router.navigate(['/post/review/'+this.travelodeMediaId])
     }
 
     postAgain() {
-        console.log('Post again button tapped !')
+        console.log('Post again button tapped !');
         this.router.navigate(['/post/start'])
     }
 
     changeTravelode() {
-        // this.router.navigate(["/travelode/list"]);
+        this.router.navigate(["/travelode/default"]);
     }
 
     hideInfoMessage() {

@@ -9,14 +9,13 @@ import {topmost} from "tns-core-modules/ui/frame";
 
 
 @Component({
-    selector: 'app-app-post-entry-gallery',
+    selector: 'PostEntryGallery',
     moduleId: module.id,
     templateUrl: './post-entry-gallery.component.html'
 })
 export class PostEntryGalleryComponent implements OnInit{
     constructor(
-        private router: Router,
-        private nav: RouterExtensions
+        private router: Router
     ) {}
 
     ngOnInit() {
@@ -53,11 +52,5 @@ export class PostEntryGalleryComponent implements OnInit{
                 console.log(e);
                 topmost().goBack();
             });
-    }
-
-    goBack() {
-        console.log('Nav button tapped !');
-        // topmost().goBack();
-        this.nav.back();
     }
 }
